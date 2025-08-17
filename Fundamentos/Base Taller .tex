@@ -1,0 +1,83 @@
+\documentclass[12pt,letterpaper]{exam}
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,activeacute]{babel} % Escribir en espanol
+\decimalpoint
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm, dsfont}
+\usepackage[mathscr]{euscript}
+\usepackage{ae,aecompl}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg} 
+\usepackage{float} 
+\usepackage{subfigure} 
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{fancybox}
+%----modificar las caption-----
+\usepackage[font=small,labelfont=small,labelfont=bf,textfont=it]{caption}
+\usepackage{enumitem}
+%--------------------------------------------------------------
+\newlist{partes}{enumerate}{3}
+\setlist[partes]{label=(\alph*)}
+\newcommand{\parte}{\item}
+%--------------------------------------------------------------------
+\newcommand{\base}[1]{\underline{\hspace{#1}}}
+%--------------------------------------------------------------------
+\newcommand{\uni}{Universidad Sergio Arboleda}
+\newcommand{\fac}{\normalsize{Escuela de Ciencias Exáctas e Ingeniería}}
+\newcommand{\dep}{Matemáticas}
+\newcommand{\mat}{Fundamentos de  Matem\'aticas} %Materia
+\newcommand{\tema}{} %Tipo y Número de Quiz
+\newcommand{\autor}{Adriana M. Salinas}
+%\newcommand{\fecha}{\textbf{Duración}: 100 minutos}
+\newcommand{\espacio}[1]{\vspace{#1}}
+%---------------------------------------------------------------------
+\boxedpoints
+\pointname{}
+\bonuspointname{(bono)}
+\extrawidth{0.8in}
+%\extrafootheight{1.25in}
+\extraheadheight{-0.1in}
+\pagestyle{headandfoot}
+\footrule
+\headrule
+\firstpageheader{}{}{}
+\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+\setlength{\columnsep}{1.5cm}
+\begin{document}
+\begin{tabular}{lr}
+    \multirow{2}{*}{\includegraphics[height=1.45cm]{Feathergraphics/logo-mobile-UniversidadSergioArboleda (2).png}}
+    	& {\textbf{\uni}} \\	
+    	& {\textbf{\fac}} \\
+    	& {\textbf{\dep}} \\
+    	& {\textbf{\mat \tema}} \\
+    	& {\textit{\autor}}\\
+		& {\textit{}}
+\end{tabular}\\
+\base{19.5cm}\\
+\textbf{Nombre}: \base{13.2cm}  \textit{Calificación}: \base{2cm} \\
+
+\begin{equation}
+    \Longleftarrow
+\end{equation}
+
+\begin{multicols}{2}
+   \begin{enumerate}
+       \item 
+
+
+
+
+
+
+
+       
+   \end{enumerate}
+\end{multicols}
+
+
+\end{document}

@@ -1,0 +1,40 @@
+# Salidas y temporales de LaTeX/latexmk
+build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.lot
+*.lof
+*.toc
+*.out
+*.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.nav
+*.snm
+*.xdv
+*.thm
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls*
+*.ist
+*.xdy
+*.lol
+# TikZ externalize y minted
+*_minted*
+*.pyg
+*.dpth
+*.md5
+*.dep
+# VS Code
+.vscode/
+# macOS / Windows
+.DS_Store
+Thumbs.db
+rectangulos_area24_imagenes/

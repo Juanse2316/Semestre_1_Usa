@@ -1,0 +1,455 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{needspace}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[a4paper, left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage[section]{placeins} % evita que los flotantes salten de sección
+\usepackage{siunitx}
+\usepackage{etoolbox}
+\usepackage{caption}
+\usepackage{float}
+
+% --- Configuración general ---
+\pgfplotsset{compat=1.18}
+\sisetup{output-decimal-marker = {,}} % <- tu preferencia que sí compila en más versiones
+\graphicspath{{./rectangulos_area24_imagenes/}}
+
+% Interlineado general
+\doublespacing
+
+% Compacidad: menos huecos alrededor de figuras/tablas y no estirar páginas
+\raggedbottom
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+
+% Interlineado simple y captions compactas dentro de TODAS las figuras y tablas
+\AtBeginEnvironment{figure}{\singlespacing}
+\AtBeginEnvironment{table}{\singlespacing}
+\captionsetup{aboveskip=6pt,belowskip=0pt}
+\captionsetup[subfigure]{justification=centering,singlelinecheck=false,aboveskip=2pt,belowskip=2pt}
+
+% Encabezados/pies
+\pagestyle{fancy}
+\lhead{Juan Ladino}
+\rhead{Solución de Talleres}
+\cfoot{\thepage}
+
+\begin{document}
+
+\title{Soluciones de los Talleres}
+\author{Juan Ladino}
+\date{\today}
+\maketitle
+
+% TOC más compacto (sin doble interlineado)
+{\tableofcontents}
+
+%__________________________________taller 2__________________________________%
+\clearpage
+\section{Taller 2}
+
+\subsection{Punto 1: Demostración algebraica de que $0.\overline{9} = 1$}
+
+\vspace{1em}
+% Reducimos el interlineado solo en la tabla para que quede compacto
+\begingroup\setstretch{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.55\textwidth} X@{}}
+ $\displaystyle x = 0.\overline{9}$.& Multiplicamos por 10.\\[1ex]
+$\displaystyle 10x = 9.\overline{9}$ & \\
+
+$\displaystyle 10x - x = 9.\overline{9} - 0.\overline{9}$ &
+Restamos la ecuación original. \\[1ex]
+
+$\displaystyle 9x = 9 \;\Rightarrow\; x = \frac{9}{9}$ &
+Obtenemos: \\[1ex]
+$\displaystyle x = 1$ &
+Por lo tanto, $0.\overline{9}=1$. \\[1ex]
+\end{tabularx}
+\endgroup
+
+\subsection{Punto 2: Comparación de fracciones de forma algebraica y gráfica}
+
+Para comparar $\frac{2}{5}$ y $\frac{3}{7}$, se presentan dos métodos: primero la multiplicación cruzada y luego un método gráfico con diagrama de barras.
+
+\vspace{1em}
+\subsubsection{Multiplicación cruzada}
+\vspace{0.25em}
+\begingroup\setstretch{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.55\textwidth} X@{}}
+$\displaystyle 2\times7=14,\quad 5\times3=15$ & Primero multiplicamos cruzado. \\[1ex]
+$\displaystyle 14<15$ & Comparamos los resultados. \\[1ex]
+$\displaystyle \frac{2}{5}< \frac{3}{7}$ & Concluimos que $\tfrac{2}{5}$ es menor que $\tfrac{3}{7}$. \\[1ex]
+\end{tabularx}
+\endgroup
+
+\subsubsection{Gráfica de las fracciones}
+
+En la gráfica se aprecia que $\frac{3}{7}\approx\num{0.42857}$ es mayor que $\frac{2}{5}=\num{0.4}$.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=\linewidth, height=0.34\textheight,
+  ybar, ymin=0, ymax=1, ytick distance=0.2,
+  bar width=18pt,
+  nodes near coords, nodes near coords align={vertical},
+  enlarge x limits=0.4,
+  axis lines=left, grid=major, ylabel={Valor de la fracción},
+  xtick={1,2}, xticklabels={$\,\frac{2}{5}\,$,$\,\frac{3}{7}\,$}
+]
+  \addplot coordinates {(1,0.4) (2,0.42857)};
+\end{axis}
+\end{tikzpicture}
+\caption{Comparación gráfica entre $\frac{2}{5}$ y $\frac{3}{7}$.}
+\end{figure}
+
+% Reservamos buen espacio para que el siguiente bloque no quede cortado feo
+\Needspace{12\baselineskip}
+\subsection{Demostración del cálculo del 10\% del 30\% de una nota}
+
+Sea $N$ la nota total.
+
+\vspace{1em}
+\begingroup\setstretch{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.62\textwidth} X@{}}
+$\displaystyle \frac{30}{100} \cdot N$ &
+Calculamos el 30\% de la nota. \\[2ex]
+
+$\displaystyle \frac{10}{100} \cdot \left( \frac{30}{100} \cdot N \right)$ &
+Ahora calculamos el 10\% de ese resultado. \\[2ex]
+
+$\displaystyle \frac{10}{100} \cdot \frac{30}{100} \cdot N$ &
+Multiplicamos las fracciones. \\[2ex]
+
+$\displaystyle \frac{300}{10000} \cdot N$ &
+Simplificamos la multiplicación. \\[2ex]
+
+$\displaystyle \frac{3}{100} \cdot N$ &
+Reducimos la fracción a su mínima expresión. \\[2ex]
+
+$\displaystyle 0.03 \cdot N$ &
+Es equivalente al 3\% de la nota total.\\[2ex]
+\end{tabularx}
+\endgroup
+
+%__________________________________taller 3__________________________________%
+\section{Taller 3}
+\subsection{Rectángulos de área fija $24$: determinación de perímetro máximo y mínimo}
+
+Con el objetivo de determinar los valores máximo y mínimo del perímetro 
+de todos los rectángulos cuya área es fija e igual a \(24\) unidades cuadradas, 
+se define una función que describa la relación entre las dimensiones y su perímetro. 
+Dado que las longitudes de los lados deben ser positivas, 
+se restringe el dominio a valores positivos. 
+Posteriormente, se calculan los puntos críticos y se analiza la concavidad 
+de la función para clasificar dichos puntos.
+
+\subsubsection{Definición de la función}
+
+Sea un rectángulo de lados \(x>0\) y \(y>0\) con área fija:
+\[
+xy=24 \quad\Rightarrow\quad y=\frac{24}{x}.
+\]
+Su perímetro está dado por:
+\[
+P(x)=2\bigl(x+y\bigr)=2\!\left(x+\frac{24}{x}\right), \qquad x>0.
+\]
+
+\subsubsection{Cálculo: mínimo y ausencia de máximo}
+
+Derivando la función \(P\) dos veces con respecto a \(x\), se obtiene:
+\[
+P'(x)=2\!\left(1-\frac{24}{x^2}\right),\qquad
+P''(x)=\frac{96}{x^3}>0.
+\]
+La ecuación crítica se obtiene al resolver \(P'(x) = 0\):
+\[
+x^2 = 24 \quad \Rightarrow \quad x = \sqrt{24}.
+\]
+
+Como el dominio está restringido a \(x>0\), 
+la segunda derivada \(P''(x)\) es estrictamente positiva en todo el dominio, 
+lo que indica que la función es cóncava hacia arriba. 
+En consecuencia, el punto crítico corresponde a un mínimo global. 
+Además, dado que la concavidad no cambia de signo, 
+la función no presenta máximos en su dominio.
+Por lo tanto, el rectángulo de menor perímetro (manteniendo el área fija) 
+es un \textbf{cuadrado}. 
+Por otro lado, se tiene que:
+\[
+\lim_{x\to 0^+} P(x)=\lim_{x\to\infty} P(x)=\infty,
+\]
+lo que muestra que \textbf{no existe un perímetro máximo}, 
+ya que este puede crecer indefinidamente al hacer uno de los lados muy pequeño 
+y el otro muy grande.
+
+\subsubsection{Diez rectángulos distintos de área 24}
+\[
+(x,y)=(x,\tfrac{24}{x}),\qquad
+P=2\!\left(x+\frac{24}{x}\right).
+\]
+
+\begin{center}
+\begingroup
+\sisetup{round-mode=places,round-precision=1}
+\begin{tabular}{@{}S[table-format=2.1] S[table-format=2.0] S[table-format=3.1]@{}}
+\toprule
+{$x$} & {$y=\frac{24}{x}$} & {$P$} \\
+\midrule
+0.5 & 48  & 97.0 \\
+1.0 & 24  & 50.0 \\
+1.5 & 16  & 35.0 \\
+2.0 & 12  & 28.0 \\
+3.0 & 8   & 22.0 \\
+4.0 & 6   & 20.0 \\
+6.0 & 4   & 20.0 \\
+8.0 & 3   & 22.0 \\
+12.0 & 2  & 28.0 \\
+24.0 & 1  & 50.0 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{center}
+
+Obsérvese cómo el perímetro se acerca al mínimo alrededor de $x=\sqrt{24}\approx \num{4.899}$
+y crece sin cota cuando $x\to 0^+$ o $x\to \infty$.
+
+% Galería de 10 rectángulos como figura continuada. Añadimos [tp] para que priorice top o página de flotantes.
+\FloatBarrier
+\begin{figure}[htbp]
+\centering
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1}
+\begin{tabular}{@{}cc@{}}
+\subcaptionbox{0.5 × 48\label{fig:r1}}{\includegraphics[width=0.4\textwidth]{rect_alto_0p5x48.pdf}} &
+\subcaptionbox{1 × 24\label{fig:r2}}{\includegraphics[width=0.4\textwidth]{rect_alto_1x24.pdf}} \\
+\subcaptionbox{1.5 × 16\label{fig:r3}}{\includegraphics[width=0.4\textwidth]{rect_alto_1p5x16.pdf}} &
+\subcaptionbox{2 × 12\label{fig:r4}}{\includegraphics[width=0.4\textwidth]{rect_alto_2x12.pdf}} \\
+\subcaptionbox{3 × 8\label{fig:r5}}{\includegraphics[width=0.4\textwidth]{rect_alto_3x8.pdf}} &
+\subcaptionbox{4 × 6\label{fig:r6}}{\includegraphics[width=0.4\textwidth]{rect_alto_4x6.pdf}} \\
+\subcaptionbox{6 × 4\label{fig:r7}}{\includegraphics[width=0.4\textwidth]{rect_ancho_6x4.pdf}} &
+\subcaptionbox{8 × 3\label{fig:r8}}{\includegraphics[width=0.4\textwidth]{rect_ancho_8x3.pdf}} \\
+\subcaptionbox{12 × 2\label{fig:r9}}{\includegraphics[width=0.4\textwidth]{rect_ancho_12x2.pdf}} &
+\subcaptionbox{24 × 1\label{fig:r10}}{\includegraphics[width=0.4\textwidth]{rect_ancho_24x1.pdf}} \\
+\end{tabular}
+\caption{Diez rectángulos distintos de área 24.}
+\label{fig:rects_area24}
+\end{figure}
+\FloatBarrier
+  
+\subsection{Círculo de área fija 24}
+En la Figura~\ref{fig:circle24} se muestra un círculo cuya área es de $24\ \mathrm{u}^2$. 
+Se incluye la fórmula general del área de un círculo y el valor del radio calculado 
+a partir de dicha área:
+
+\[
+A = \pi r^2
+\quad\Rightarrow\quad
+r = \sqrt{\frac{A}{\pi}} \approx 2.764\ \mathrm{u}.
+\]
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{circle_area_24_labeled.pdf}
+    \caption{Círculo con $A = 24\ \mathrm{u}^2$, radio calculado y fórmula usada.}
+    \label{fig:circle24}
+\end{figure}
+%__________________________________taller 4__________________________________%
+\section{Taller 4: Demostraciones de potenciación + análisis de IA}
+
+\subsection{Propiedades de las potencias para $m,n \in \mathbb{N}$}
+
+\subsubsection{Definición de potencia}
+
+Trabajaremos con $a \in \mathbb{R}$ y $m,n \in \mathbb{N}$.  
+Definimos la potencia entera no negativa por producto iterado:
+\[
+a^n \;=\; \underbrace{a \cdot a \cdot \dotsb \cdot a}_{n \text{ veces}}
+\quad (n \in \mathbb{N}),
+\]
+
+\medskip
+\noindent\textbf{Propiedad 1.} \emph{Para todo $m,n \in \mathbb{N}$ se cumple}
+\[
+a^m \cdot a^n \;=\; a^{m+n}.
+\]
+
+\subsubsection{Demostración por definición de: \(a^m \cdot a^n \;=\; a^{m+n}\)}
+
+\[
+a^m \;=\; \underbrace{a \cdot a \cdot \dotsb \cdot a}_{m \text{ veces}},
+\qquad
+a^n \;=\; \underbrace{a \cdot a \cdot \dotsb \cdot a}_{n \text{ veces}}.
+\]
+Al multiplicar $a^m \cdot a^n$,
+primero \textbf{usamos la propiedad conmutativa} para observar que todos los factores son iguales y podemos reordenarlos sin alterar el producto.  
+Luego, \textbf{usamos la propiedad asociativa} para eliminar paréntesis y escribir la multiplicación como una sola secuencia continua de factores:
+\[
+a^m \cdot a^n
+= 
+(\underbrace{a \cdot a \cdots a}_{m \text{ veces}})
+\cdot 
+(\underbrace{a \cdot a \cdots a}_{n \text{ veces}})
+=
+\underbrace{a \cdot a \cdots a}_{m+n \text{ veces}}
+= a^{m+n}.
+\]
+Así, la concatenación de los $m$ factores de $a^m$ y los $n$ factores de $a^n$
+produce $m+n$ factores en total, que por definición es $a^{m+n}$.
+\qedhere
+
+\medskip
+\noindent\textbf{Propiedad 2.} \emph{Para todo $m,n \in \mathbb{N}$ se cumple}
+\[
+\bigl(a^m\bigr)^n \;=\; a^{mn}.
+\]
+
+\subsubsection{Demostración por definición de: \((a^m)^n \;=\; a^{mn}\)}
+
+\[
+\bigl(a^m\bigr)^n
+\;=\;
+\underbrace{a^m \cdot a^m \cdot \dotsb \cdot a^m}_{n \text{ veces}}.
+\]
+Cada factor $a^m$ es, a su vez,
+\[
+a^m = \underbrace{a \cdot a \cdots a}_{m \text{ veces}}.
+\]
+Entonces, \textbf{usando la propiedad conmutativa} podemos considerar que todos los factores $a$ de todos los $a^m$ son indistinguibles y pueden colocarse en cualquier orden.  
+Después, \textbf{usando la propiedad asociativa} podemos reagrupar todos estos factores en una sola multiplicación continua:
+\[
+\bigl(a^m\bigr)^n
+= 
+\underbrace{
+\left( \underbrace{a \cdot a \cdots a}_{m \text{ veces}} \right)
+\cdot
+\left( \underbrace{a \cdot a \cdots a}_{m \text{ veces}} \right)
+\cdots
+}_{n \text{ veces}}
+= 
+\underbrace{a \cdot a \cdots a}_{m \cdot n \text{ veces}}.
+\]
+Por definición de potencia, esto último es $a^{mn}$.
+
+\qedhere
+
+\medskip
+\subsubsection{Convención para exponente cero.}
+Definimos $a^0:=1$ para todo $a\neq 0$, donde $1$ es el elemento neutro multiplicativo.  
+Con esta elección, para todo $m\in\mathbb{N}$ se mantiene la propiedad:
+\[
+a^m \cdot a^0 = a^{m+0} = a^m.
+\]
+Esta igualdad solo es posible si $a^0 = 1$ para todo $a \neq 0$.  
+(En este contexto, $0^0$ no se define.)
+
+\subsection{Interacción con IA}
+
+\subsubsection{Demostración de propiedades de potencias}
+
+\textbf{Enunciado(prompt):}  
+Piensa tu respuesta y a partir de las definiciones pruebe que:
+\[
+a^m \cdot a^n = a^{m+n} \quad \text{para } m,n \in \mathbb{N}
+\]
+\[
+(a^m)^n = a^{mn} \quad \text{para } m,n \in \mathbb{N}
+\]
+\[
+a^0 = 1
+\]
+
+\bigskip
+
+\textbf{Demostración de la IA:}  
+
+Trabajaremos en un conjunto con una operación multiplicativa asociativa y elemento neutro \(1\) (un monoide).  
+Para \(a\) fijo, definimos potencias naturales de forma recursiva:
+\[
+a^1 := a, \quad a^{n+1} := a^n \cdot a \quad \text{para } n \in \mathbb{N}.
+\]
+
+\subsection*{1) \(a^m \cdot a^n = a^{m+n}\) para \(m,n \in \mathbb{N}\)}
+
+\textbf{Demostración por inducción en \(n\):}
+
+\textbf{Caso base:} Para \(n=1\):
+\[
+a^m \cdot a = a^{m+1}
+\]
+por la definición recursiva. Es decir, \(a^m \cdot a^1 = a^{m+1}\).
+
+\textbf{Paso inductivo:} Supongamos que para algún \(n\) se cumple \(a^m \cdot a^n = a^{m+n}\).  
+Entonces:
+\[
+\begin{aligned}
+a^m \cdot a^{n+1} 
+&= a^m \cdot (a^n \cdot a) \\
+&= (a^m \cdot a^n) \cdot a \quad \text{(asociatividad)} \\
+&= a^{m+n} \cdot a \\
+&= a^{m+n+1} \\
+&= a^{m+(n+1)}.
+\end{aligned}
+\]
+Por inducción, queda probado para todo \(n\).
+
+\subsection*{2) \((a^m)^n = a^{mn}\) para \(m,n \in \mathbb{N}\)}
+
+\textbf{Demostración por inducción en \(n\):}
+
+\textbf{Caso base:} Para \(n=1\):
+\[
+(a^m)^1 = a^m = a^{m \cdot 1}.
+\]
+
+\textbf{Paso inductivo:} Supongamos que \((a^m)^n = a^{mn}\). Entonces:
+\[
+\begin{aligned}
+(a^m)^{n+1} 
+&= (a^m)^n \cdot a^m \\
+&= a^{mn} \cdot a^m \\
+&= a^{mn+m} \\
+&= a^{m(n+1)},
+\end{aligned}
+\]
+donde usamos el resultado del punto 1). Por inducción, la igualdad es válida para todo \(n\).
+
+\subsection*{3) \(a^0 = 1\)}
+
+Para incorporar el exponente \(0\) de forma coherente con el punto (1), la única elección posible es \(a^0 = 1\).
+
+Si en (1) ponemos \(n=0\):
+\[
+a^m \cdot a^0 = a^{m+0} = a^m \quad \text{para todo } m.
+\]
+Esto significa que \(a^0\) actúa como elemento neutro derecho para todos los \(a^m\).  
+El elemento neutro de la multiplicación es único y es \(1\), por lo tanto:
+\[
+a^0 = 1.
+\]
+
+\subsubsection{Explicación con mis palabras:}
+La IA realiza la demostración de las propiedades propuestas a partir de 
+la definición recursiva de las potencias \(a^1 := a\) y \(a^{n+1} := a^n \cdot a\).  
+Utiliza el método de inducción matemática para probar las dos primeras propiedades: 
+la suma de exponentes y la multiplicación de exponentes.  
+En ambos casos, se parte del \textbf{caso base} y luego se realiza el \textbf{paso inductivo}, 
+usando principalmente la definición \(a^{n+1} = a^n \cdot a\) para mostrar que, asumiendo que 
+la propiedad es cierta para un número \(n\), también lo es para \(n+1\).  
+Finalmente, para el caso \(a^0 = 1\), se justifica que debe ser el elemento neutro multiplicativo 
+para que las leyes de potencias se mantengan.
+
+
+\end{document}
