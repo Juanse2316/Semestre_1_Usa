@@ -1,0 +1,146 @@
+\documentclass[12pt,letterpaper]{exam}
+
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{001C}{}
+\usepackage[spanish,activeacute]{babel}
+\decimalpoint
+
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm,dsfont}
+% \usepackage[mathscr]{euscript}  % <-- QUITADO para evitar choque con mathrsfs
+\usepackage{mathrsfs}            % <-- Mantén este si usas \mathscr
+% \usepackage{ae,aecompl}         % <-- QUITADO (obsoleto)
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,intersections,positioning}
+\tikzset{
+  plane/.style={fill=gray!12, draw=black!50},
+  line3d/.style={line width=0.9pt},
+  pt/.style={circle,fill=black,inner sep=1.4pt},
+  label/.style={font=\small}
+}
+
+% --- Imágenes y colores ---
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{adjustbox}
+\usepackage[dvipsnames]{xcolor}
+
+% --- Caption / subfiguras ---
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}
+\usepackage{subcaption}  % <-- en lugar de subfigure
+
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{fancybox}
+% \usepackage{mathrsfs}  % ya está arriba
+
+% === RUTAS DE APOYO (opcional) ===
+\graphicspath{{../assets/}{../Talleres_fundamentos/}{./}}
+
+%--------------------------------------------------------------------
+\newcommand{\base}[1]{\underline{\hspace{#1}}}
+%--------------------------------------------------------------------
+\newcommand{\uni}{Universidad Sergio Arboleda}
+\newcommand{\fac}{\normalsize{Escuela de Ciencias Ex\'actas e Ingenier\'ia}}
+\newcommand{\dep}{Matem\'aticas}
+\newcommand{\mat}{Geometría Euclidiana} %Materia
+\newcommand{\tema}{} %Tipo y Número de Quiz
+\newcommand{\autor}{Juan Carlos Ávila M}
+%\newcommand{\fecha}{\textbf{Duración}: 100 minutos}
+\newcommand{\espacio}[1]{\vspace{#1}}
+\renewcommand{\arraystretch}{1.15}
+
+%---------------------------------------------------------------------
+\pagestyle{headandfoot}
+\footrule
+\headrule
+\firstpageheader{}{}{}
+\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+
+\begin{document}
+
+% ===== Encabezado institucional =====
+\begin{tabular}{lr}
+    \multirow{2}{*}{\includegraphics[height=1.4cm]{logosergio.png}} &
+    {\textbf{\uni}} \\
+    & {\textbf{\fac}} \\
+    & {\textbf{\dep}} \\
+    & {\textbf{\mat \tema}} \\
+    & {\textit{\autor}} \\
+    & {\textit{}}
+\end{tabular}\\
+\base{19.5cm}\\
+% \textbf{Nombre}: \base{13.2cm} \quad \textit{Calificación}: \base{2cm} \\[6pt]
+\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Sebastian Ladino Mendieta \hfill} \quad 
+\textit{Calificaci\'on}: \base{2cm} \\[6pt]
+
+% ===== TALLER 1 =====
+\section*{Taller 1 (Postulados de incidencia de la geometr\'ia euclidiana y algunas consecuencias)}
+
+A continuación aparece el enunciado de algunos teoremas junto con los pasos de la demostración de cada uno. Los pasos están en desorden y sin justificar; por tanto, la tarea consiste en
+ordenar los pasos de las demostraciones y escribir las justificaciones respectivas:
+
+% ================== LISTA DE TRES TEOREMAS ==================
+\begin{enumerate}[label=\alph*)]
+
+%______________________Teorema recta--punto--plano_______________________________________%
+\item \textbf{Teorema recta--punto--plano.}
+Dada una recta $\ell$ y un punto $P\notin \ell$, existe exactamente un plano que contiene a $\ell$ y $P$.
+
+%__________________ Imagen de Teorema recta--punto--plano_______________________________________%
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\coordinate (P1) at (-5,-0.6);
+\coordinate (P2) at (-1, 1.6);
+\coordinate (P3) at ( 4, 1.3);
+\coordinate (P4) at ( 0,-1.2);
+
+\fill[orange!25] (P1)--(P2)--(P3)--(P4)--cycle;
+\draw[orange!70, line width=1] (P1)--(P2)--(P3)--(P4)--cycle;
+
+\coordinate (A) at (-3.6,-0.20);
+\coordinate (B) at ( 2.7, 0.95);
+\draw[very thick] (A)--(B) node[midway, above] {$\ell$};
+
+\fill[blue] (A) circle (2.2pt) node[left] {$A$};
+\fill[blue] (B) circle (2.2pt) node[above right] {$B$};
+\fill[blue] (1.2,-0.25) circle (2.2pt) node[right] {$P$};
+\end{tikzpicture}
+\caption{Dada una recta $\ell$ y un punto $P\notin\ell$, existe un \'unico plano $\alpha$ con $\ell\subset\alpha$ y $P\in\alpha$.}
+\end{figure}
+
+%__________________tabla de Teorema recta--punto--plano_______________________________________%
+
+\begin{center}
+\begin{tabular}{|p{0.62\linewidth}|p{0.33\linewidth}|}
+\hline
+\textbf{Paso} & \textbf{Justificación} \\ \hline
+1. $\ell$ una recta. & 1. Hipótesis del teorema. \\ \hline
+2. $A, B$ puntos distintos en $\ell$. & 2. P. mínima cantidad de puntos aplicado a (1). \\ \hline
+3. $P$ un punto. & 3. Hipótesis del teorema. \\ \hline
+4. $P \notin \ell$. & 4. Hipótesis del teorema. \\ \hline
+5. $A, B$ y $P$ son no colineales. & 5. Definición de colinealidad y unicidad de la recta por (2, 4). \\ \hline
+6. Existe un único plano $\alpha$ que contiene a $A, B$ y $P$. & 6. P. plano (tres puntos no colineales) a partir de (5). \\ \hline
+\vspace{0.001em}
+7. $\overleftrightarrow{AB} \subseteq \alpha$. & 7. P. llaneza del plano: de (6) $A,B\in\alpha$; la recta por $A,B$ (única) está contenida en $\alpha$. \\ \hline
+\vspace{0.001em}
+8. $\{P\} \cup \overleftrightarrow{AB} \subseteq \alpha$. & 8. D. contención de conjuntos usando (6, 7). \\ \hline
+\end{tabular}
+\end{center}
+\vspace{1em}
+
+
+
+\end{enumerate} % cierra lista principal
+
+\end{document}
