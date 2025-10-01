@@ -1,0 +1,208 @@
+\documentclass[12pt,letterpaper]{exam}
+
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{001C}{}
+\usepackage[spanish,activeacute]{babel}
+\decimalpoint
+
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm,dsfont}
+\usepackage{mathrsfs}
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,intersections,positioning}
+\tikzset{
+  plane/.style={fill=gray!12, draw=black!50},
+  line3d/.style={line width=0.9pt},
+  pt/.style={circle,fill=black,inner sep=1.4pt},
+  label/.style={font=\small}
+}
+
+% --- Imágenes y colores ---
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{adjustbox}
+\usepackage[dvipsnames]{xcolor}
+
+% --- Caption / subfiguras ---
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}
+\usepackage{subcaption}
+
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{fancybox}
+
+% --- Tablas avanzadas ---
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{booktabs}
+
+% Definición de columnas tipo L y R para tabularx/ltablex
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedright\arraybackslash}X}
+
+% --- Tablas X que se parten entre páginas ---
+\usepackage{ltablex}   % combina tabularx + longtable
+\keepXColumns          % mantiene anchos X constantes entre páginas
+\setlength\LTleft{0pt}
+\setlength\LTright{0pt}
+
+% ===== Helper para filas de ancho completo que envuelven texto =====
+\newcommand{\fullrow}[1]{%
+  \multicolumn{2}{@{}>{\raggedright\arraybackslash}p{\linewidth}@{}}{#1}%
+}
+
+% (opcional) margen de emergencia para evitar overfull hboxes
+\emergencystretch=2em
+
+% === RUTAS DE APOYO (opcional) ===
+\graphicspath{{../assets/}{../Talleres_fundamentos/}{./}}
+
+%--------------------------------------------------------------------
+\newcommand{\base}[1]{\underline{\hspace{#1}}}
+\newcommand{\uni}{Universidad Sergio Arboleda}
+\newcommand{\fac}{\normalsize{Escuela de Ciencias Ex\'actas e Ingenier\'ia}}
+\newcommand{\dep}{Matem\'aticas}
+\newcommand{\mat}{Geometría Euclidiana}
+\newcommand{\tema}{}
+\newcommand{\autor}{Juan Carlos Ávila M}
+\newcommand{\espacio}[1]{\vspace{#1}}
+\renewcommand{\arraystretch}{1.15}
+
+%---------------------------------------------------------------------
+\pagestyle{headandfoot}
+\footrule
+\headrule
+\firstpageheader{}{}{}
+\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+
+\begin{document}
+
+% ===== Encabezado institucional =====
+\begin{tabular}{lr}
+    \multirow{2}{*}{\includegraphics[height=1.4cm]{logosergio.png}} &
+    {\textbf{\uni}} \\
+    & {\textbf{\fac}} \\
+    & {\textbf{\dep}} \\
+    & {\textbf{\mat \tema}} \\
+    & {\textit{\autor}} \\
+    & {\textit{}}
+\end{tabular}\\
+\base{19.5cm}\\
+\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Sebastian Ladino Mendieta \hfill} \quad 
+\textit{Calificaci\'on}: \base{2cm} \\[6pt]
+
+
+%===========================================================
+% TEORMA Z
+%===========================================================
+\section*{Teorema Z}
+\textbf{Enunciado.} Si $D\in\operatorname{int}\angle BAC$ y $F-A-C$, entonces $F$ y $B$ están del mismo lado de la $\overleftrightarrow{AD}$.
+
+\subsection*{Demostración (doble columna)}
+
+% ------ TABLA PARTIBLE CON LTABLEX ------
+\begin{tabularx}{\linewidth}{@{}L R@{}}
+\toprule
+\textbf{Afirmación} & \textbf{Razón} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Afirmación} & \textbf{Razón \,(cont.)} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\small Continúa en la siguiente página} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+1.\; $\angle BAC$ & Datos: $A,B,C$ no colineales. \\
+2.\; $F-A-C$ & Hipótesis. \\
+3.\; $D\in\operatorname{int}\angle BAC$ & Hipótesis. \\
+4.\; Sea $G$ tal que $G-A-D$. & Construcción sobre $\overleftrightarrow{AD}$. \\
+5.\; $\overleftrightarrow{AD}=\overrightarrow{AD}\cup\overrightarrow{AG}$. & Propiedad de recta como unión de semirrectas opuestas. \\
+\fullrow{\emph{Primera parte}}\\
+6.\; $F$ y $C$ están del mismo lado de $\overleftrightarrow{AB}$. & Teorema de interestancia (mismo semiplano) aplicado a $F-A-C$. \\
+7.\; $\overrightarrow{BF}-\{B\}\subseteq S_{\overleftrightarrow{AB},\,C}$. & Teorema de la semirrecta. \\
+8.\; Ningún punto de $FB$ está en $\operatorname{int}\angle BAC$. & \textit{Ver Justificación (Z-8).} \\
+9.\; $\overline{FB}$ no tiene puntos de $\overrightarrow{AD}$. & (3) + ``Semirrecta en el interior del ángulo'': $\overrightarrow{AD}-\{A\}\subseteq \operatorname{int}\angle BAC$; usar (8). \\
+10.\; $\overrightarrow{AD}\cap \overline{FB}=\varnothing$. & Reescritura de (9). \\
+\fullrow{\emph{Segunda parte}}\\
+11.\; $\overrightarrow{FB}-\{F\}\subseteq S_{\overleftrightarrow{AC},\,B}$. & Teorema de la semirrecta. \\
+12.\; $\overline{FB}-\{F\}\subseteq S_{\overleftrightarrow{AC},\,B}$. & \textit{Ver Justificación (Z-12).} \\
+13.\; $\overrightarrow{AG}-\{A\}\subseteq S_{\overleftrightarrow{AC},\,\neg B}$. & Teorema de la semirrecta 2 (si $D\in\operatorname{int}\angle BAC$ y $G-A-D$). \\
+14.\; $\overline{FB}$ no tiene puntos de $\overrightarrow{AG}$. & \textit{Ver Justificación (Z-14).} \\
+15.\; $\overline{FB}\cap\overrightarrow{AG}=\varnothing$. & Reescritura de (14). \\
+16.\; $\overleftrightarrow{AD}\cap FB=\varnothing$. & (5), (10) y (15): $FB\cap(\overrightarrow{AD}\cup\overrightarrow{AG})=(FB\cap\overrightarrow{AD})\cup(FB\cap\overrightarrow{AG})=\varnothing$. \\
+\midrule
+\fullrow{\textbf{Conclusión.}\;
+Por ``segmento contenido en un semiplano'',
+$\overline{FB}\cap\overleftrightarrow{AD}=\varnothing$ implica que
+$F$ y $B$ están del mismo lado de $\overleftrightarrow{AD}$. \qed}\\
+
+\end{tabularx}
+
+\subsubsection*{Justificaciones Teorema Z}
+\begin{itemize}[leftmargin=2.2em]
+  \item \textbf{(Z-8)} \; Por definición, $X\in\operatorname{int}\angle BAC$ ssi: (i) $X$ está del mismo lado de $\overleftrightarrow{AB}$ que $C$ y (ii) del mismo lado de $\overleftrightarrow{CB}$ que $A$.  
+  Por (7), todo $X\in\overrightarrow{BF}-\{B\}$ satisface (i). Sin embargo, como $B\in\overleftrightarrow{CB}$ y $F-A-C$, el teorema de interestancia (lados opuestos) respecto de $\overleftrightarrow{CB}$ muestra que esos $X$ están del lado opuesto al de $A$, con lo cual (ii) falla. Por tanto, ningún punto de $FB$ está en el interior.
+  \item \textbf{(Z-12)} \; $FB-\{F\}\subseteq \overrightarrow{FB}-\{F\}$ (el segmento está contenido en la semirrecta que parte de $F$ y pasa por $B$). Combinando con (11) se obtiene la contención.
+  \item \textbf{(Z-14)} \; Por (12), $FB-\{F\}\subseteq S_{\overleftrightarrow{AC},\,B}$, mientras que por (13), $\overrightarrow{AG}-\{A\}\subseteq S_{\overleftrightarrow{AC},\,\neg B}$. Estos semiplanos son opuestos y disjuntos; por tanto no hay intersección entre $FB$ y $\overrightarrow{AG}$ (salvo posibles extremos, que aquí no aplican).
+\end{itemize}
+
+
+%===========================================================
+% TEORMA DE LA BARRA CRUZADA
+%===========================================================
+\section*{Teorema de la barra cruzada}
+\textbf{Enunciado.} Si $D\in\operatorname{int}\angle BAC$, entonces $\overrightarrow{AD}$ interseca a $BC$.
+
+\subsection*{Demostración (doble columna)}
+
+% ------ TABLA PARTIBLE CON LTABLEX ------
+\begin{tabularx}{\linewidth}{@{}L R@{}}
+\toprule
+\textbf{Afirmación} & \textbf{Razón} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Afirmación} & \textbf{Razón \,(cont.)} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{2}{r}{\small Continúa en la siguiente página} \\
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+
+1.\; $\angle BAC$. & $A,B,C$ no colineales (triángulo). \\
+2.\; $D\in\operatorname{int}\angle BAC$. & Hipótesis. \\
+3.\; Supongamos que $\overrightarrow{AD}\cap \overline{BC}=\varnothing$. & Suposición para contradicción. \\
+4.\; $B$ y $C$ están del mismo lado de $\overleftrightarrow{AD}$. & \textit{Ver Justificación (BC-4).} \\
+5.\; Sea $F$ tal que $F-A-C$. & Construcción sobre $\overleftrightarrow{AC}$. \\
+6.\; $F$ y $B$ están del mismo lado de $\overleftrightarrow{AD}$. & Teorema Z (usando (2) y (5)). \\
+7.\; $F$ y $C$ están del mismo lado de $\overleftrightarrow{AD}$. & Interestancia (mismo semiplano) aplicado a $F-A-C$. \\
+8.\; $\overline{FC}\cap \overleftrightarrow{AD}=\varnothing$. & ``Segmento contenido en un semiplano'' con extremos (6) y (7). \\
+9.\; $\overline{FC}\cap \overleftrightarrow{AD}=\{A\}$. & Porque $F-A-C$, $A\in\overline{FC}$ y $A\in\overleftrightarrow{AD}$; único punto común. \\
+10.\; $\overrightarrow{AD}\cap \overline{BC}\neq\varnothing$. & (8)–(9) contradicen (3). Por tanto, existe la intersección. \\
+\midrule
+\fullrow{\textbf{Conclusión.}\; $\overrightarrow{AD}$ corta al segmento $BC$. \qed}\\
+
+\end{tabularx}
+
+\subsubsection*{Justificación Teorema de la barra cruzada}
+\begin{itemize}[leftmargin=2.2em]
+  \item \textbf{(BC-4)} \; Si $B$ y $C$ estuvieran en lados opuestos de $\overleftrightarrow{AD}$, entonces por ``extremos de segmento en semiplanos opuestos'' el segmento $\overline{BC}$ cortaría a $\overleftrightarrow{AD}$. Ese punto de corte, al estar en el triángulo $ABC$, no puede pertenecer a $\overrightarrow{AG}$ (usando que los puntos de $BC$ están en $\operatorname{int}\angle BAC$ y la Semirrecta~2 sitúa $\overrightarrow{AG}-\{A\}$ en el semiplano opuesto); por tanto caería en $\overrightarrow{AD}$, contradiciendo la suposición (3). De ahí que $B$ y $C$ queden del mismo lado.
+\end{itemize}
+
+\end{document}

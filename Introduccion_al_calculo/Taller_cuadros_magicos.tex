@@ -1,0 +1,199 @@
+\documentclass[12pt]{article}
+
+% --- Codificación y español ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+
+% --- Márgenes y utilidades ---
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{enumitem}
+
+% --- TikZ y colores ---
+\usepackage{tikz}
+\usepackage[dvipsnames]{xcolor} % ForestGreen disponible
+
+% ===== Encabezado =====
+\newcommand{\Nombre}{Juan Ladino}
+\newcommand{\Materia}{\rule{5cm}{0.4pt}} % línea para escribir la materia
+
+% ===== Estilo de los números dados (verdes) =====
+\tikzset{
+  msnum/.style={ font=\bfseries}%
+  % Si prefieres sin color, usa:
+  % msnum/.style={font=\bfseries}
+}
+
+% ===== Macro para 3x3 (r1c1 ... r3c3) =====
+\newcommand{\magicsquare}[9]{%
+\begin{tikzpicture}[scale=1]
+  \draw[very thick] (0,0) rectangle (3,3);
+  \draw[thick] (1,0)--(1,3) (2,0)--(2,3) (0,1)--(3,1) (0,2)--(3,2);
+  \node[msnum] at (0.5,2.5) {#1};
+  \node[msnum] at (1.5,2.5) {#2};
+  \node[msnum] at (2.5,2.5) {#3};
+  \node[msnum] at (0.5,1.5) {#4};
+  \node[msnum] at (1.5,1.5) {#5};
+  \node[msnum] at (2.5,1.5) {#6};
+  \node[msnum] at (0.5,0.5) {#7};
+  \node[msnum] at (1.5,0.5) {#8};
+  \node[msnum] at (2.5,0.5) {#9};
+\end{tikzpicture}%
+}
+
+% ===== Macro para rotular cada cuadro =====
+\newcommand{\cuadro}[2]{%
+  \begin{tabular}{@{}c@{}}
+    #1\\[-0.4em]
+    \footnotesize\textit{Cuadro #2}
+  \end{tabular}%
+}
+
+\begin{document}
+\noindent\textbf{Nombre:} \Nombre \hfill
+\textbf{Materia:} \Materia \hfill
+\textbf{Fecha:} \rule{3cm}{0.4pt}
+\par\medskip\hrule\medskip
+
+\section{Cuadros Mágicos}
+
+\begin{center}
+\setlength{\tabcolsep}{1.4cm}
+
+% ================= PRIMERA TABLA =================
+\begin{tabular}{cc}
+% 1) Cuadro 1
+\magicsquare{5}{6}{-8}{-12}{1}{14}{10}{-4}{-3} &
+% 2) Cuadro 2
+\magicsquare{-8}{10}{-11}{-6}{ -3 }{0}{5}{-16}{2} \\[2.0em]
+% 3) Cuadro 3
+\magicsquare{7}{0}{-1}{-6}{2}{10}{5}{4}{-3} &
+% 4) Cuadro 4
+\magicsquare{-2}{-7}{-6}{-9}{-5}{-1}{-4}{-3}{-8}\\[2.0em]
+% 5
+\magicsquare{0.3}{1.0}{0.5}{0.8}{0.6}{0.4}{0.7}{0.2}{0.9} &
+% 6
+\magicsquare{1/12}{3/4}{1/6}{5/12}{1/3}{1/4}{1/2}{\(\frac{-1}{12}\)}{7/12}
+\\[2.0em]
+\end{tabular}
+
+\vspace{2em} % espacio entre tablas
+
+% ================= SEGUNDA TABLA =================
+\begin{tabular}{cc}
+% 7
+\magicsquare{11.8}{35.8}{31}{45.4}{26.2}{7}{21.4}{16.6}{40.6} &
+% 8
+\magicsquare{2}{7}{6}{9}{5}{1}{4}{3}{8}
+\\[2.0em]
+% 9
+\magicsquare{8}{1}{6}{3}{5}{7}{4}{9}{2} &
+% 10
+\magicsquare{-3}{4}{-1}{2}{0}{-2}{1}{-4}{3}
+\\[2.0em]
+% 11
+\magicsquare{-3}{2}{-5}{-4}{-2}{0}{1}{-6}{-1} &
+% 12
+\magicsquare{7/10}{-3/5}{\(\frac{11}{10}\)}{4/5}{2/5}{0}{\(\frac{-3}{10}\)}{7/5}{1/10}\\[2.0em]
+% 13
+\magicsquare{5.3}{13.3}{11.7}{16.5}{10.1}{3.7}{8.5}{6.9}{14.9} &
+\end{tabular}
+\end{center}
+
+\section{Estrategias de solución}
+\begin{itemize}
+  \item \textbf{Encuentra la suma mágica con el centro.}\\
+        Multiplica el número del centro por \(3\). Ese total (\(S\)) es el que deben sumar todas las filas, columnas y diagonales.
+  \item \textbf{Opuestos alrededor del centro.}\\
+        Cualquier par de casillas opuestas (a través del centro) suma \(2\times c\), donde \(c\) es el centro. Si conoces una casilla \(a\), la opuesta vale \(2c - a\).
+  \item \textbf{Dos centros vecinos \(\to\) esquina opuesta.}\\
+        Suma el centro de arriba y el centro de la izquierda y divide entre \(2\): obtienes la esquina opuesta a ambos.
+  \item \textbf{Completar líneas con dos números.}\\
+        Si ya conoces \(S\) y tienes dos números \(a\) y \(b\) en una misma fila/columna/diagonal, el tercero es \(S - (a+b)\).
+  \item \textbf{Primero la “cruz”.}\\
+        Empieza por la fila y la columna que pasan por el centro; suelen tener más pistas.
+  \item \textbf{Dos esquinas \(\to\) centro.}\\
+        Si conoces dos esquinas opuestas \(a\) y \(b\), el centro es su promedio: \(c=\frac{a+b}{2}\).
+\end{itemize}
+
+\section{Taller 1: Cuadros Mágicos 3x3}
+
+\begin{center}
+\begin{tabular}{cc}
+% 1
+\cuadro{\magicsquare{}{17}{}{11}{}{}{}{}{13}}{1} &
+% 2 (resuelto)
+\cuadro{\magicsquare{\(\frac{1}{24}\)}{\(\frac{5}{3}\)}{\(\frac{11}{12}\)}
+                      {\(\frac{7}{4}\)}{\(\frac{7}{8}\)}{0}
+                      {\(\frac{5}{6}\)}{\(\frac{1}{12}\)}{\(\frac{41}{24}\)}}{2} \\[1.6em]
+% 3 (vacío mostrado; puedes sustituir por la versión llena si quieres)
+\cuadro{\magicsquare{19}{17}{33}{37}{23}{9}{13}{29}{27}}{3} &
+
+\cuadro{\magicsquare{1.25}{}{}{}{2.15}{}{}{}{0.75}}{4} \\[1.6em]
+% 5
+\cuadro{\magicsquare{}{31}{}{41}{}{}{}{}{47}}{5} &
+% 6
+\cuadro{\magicsquare{}{$\pi$}{}{$e$}{}{}{}{}{$\phi$}}{6}
+\end{tabular}
+\end{center}
+
+\begin{center}
+\begin{tabular}{cc}
+% 7
+\cuadro{\magicsquare{-7}{}{}{}{11}{}{}{}{5}}{7} &
+% 8
+\cuadro{\magicsquare{$0.\overline{3}$}{}{}{}{$1.\overline{6}$}{}{}{}{$2.\overline{7}$}}{8} \\[1.6em]
+% 9
+\cuadro{\magicsquare{}{-13}{}{-17}{}{}{}{}{-19}}{9} &
+% 10
+\cuadro{\magicsquare{}{17}{}{11}{}{}{}{}{13}}{10} \\[1.6em]
+% 11
+\cuadro{\magicsquare{\(\frac{1}{6}\)}{}{\(\frac{1}{3}\)}
+                      {}{}{}
+                      {\(\frac{2}{9}\)}{}{\(\frac{1}{18}\)}}{11} &
+% 12
+\cuadro{\magicsquare{}{31}{}{41}{}{}{}{}{47}}{12}
+\end{tabular}
+\end{center}
+
+\section*{Explicaciones de cada cuadro}
+\begin{enumerate}[label=\textbf{Cuadro \arabic*:}, leftmargin=*]
+
+\item \textbf{No tiene solución.}
+Opuestos fuerzan $c=m-4$, $g=m+4$ $\Rightarrow$ col.~1 $=3m+2\neq 3m$.
+
+\item \textbf{Tiene solución.}
+
+\item \textbf{Tiene solución.}
+
+\item \textbf{No tiene solución.}
+Opuestos: $a+i=2.00$ pero $2m=4.30$.
+
+\item \textbf{No tiene solución.}
+De los datos se obtiene col.~1 $=3m-22\neq 3m$.
+
+\item \textbf{No tiene solución.}
+Exigiría $e+\pi=2\phi$, lo cual es falso.
+
+\item \textbf{No tiene solución.}
+Centro $m=11\Rightarrow S=33$. Opuestos: $a+i=-7+5=-2\neq 22$.
+
+\item \textbf{No tiene solución.}
+Centro $m=\tfrac{5}{3}\Rightarrow 2m=\tfrac{10}{3}$; pero $a+i=\tfrac{28}{9}$.
+
+\item \textbf{No tiene solución.}
+De los datos se deduce col.~1 $=3m+8\neq 3m$.
+
+\item \textbf{No tiene solución.}
+Mismo patrón que el Cuadro 1.
+
+\item \textbf{No tiene solución.}
+De $a=\tfrac{1}{6}$, $i=\tfrac{1}{18}$ se fuerza $m=\tfrac{1}{9}$, pero $c+g=\tfrac{5}{9}\neq 2m=\tfrac{2}{9}$.
+
+\item \textbf{No tiene solución.}
+Mismo patrón que el Cuadro 5.
+
+\end{enumerate}
+\end{document}
