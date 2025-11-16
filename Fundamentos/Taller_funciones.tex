@@ -1,0 +1,441 @@
+\documentclass[12pt,letterpaper]{exam}
+
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{001C}{}
+\usepackage[spanish,activeacute]{babel}
+\decimalpoint
+
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm,dsfont}
+\usepackage{mathrsfs}
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,intersections,positioning}
+\tikzset{
+  plane/.style={fill=gray!12, draw=black!50},
+  line3d/.style={line width=0.9pt},
+  pt/.style={circle,fill=black,inner sep=1.4pt},
+  label/.style={font=\small}
+}
+
+% --- Imágenes y colores ---
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{adjustbox}
+\usepackage[dvipsnames]{xcolor}
+
+% --- Caption / subfiguras ---
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}
+\usepackage{subcaption}
+
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{fancybox}
+
+% === RUTAS DE APOYO (opcional) ===
+\graphicspath{{../assets/}{../Talleres_fundamentos/}{./}}
+
+%--------------------------------------------------------------------
+\newcommand{\base}[1]{\underline{\hspace{#1}}}
+%--------------------------------------------------------------------
+\newcommand{\uni}{Universidad Sergio Arboleda}
+\newcommand{\fac}{\normalsize{Escuela de Ciencias Ex\'actas e Ingenier\'ia}}
+\newcommand{\dep}{Matem\'aticas}
+\newcommand{\mat}{Materia} %Materia
+\newcommand{\tema}{} %Tipo y Número de Quiz
+\newcommand{\autor}{Profesor}% nombre del profesor 
+\newcommand{\espacio}[1]{\vspace{#1}}
+\renewcommand{\arraystretch}{1.15}
+
+% ---- utilidades para conjuntos ----
+\newcommand{\CA}[1]{A\setminus #1}
+\newcommand{\CB}[1]{B\setminus #1}
+
+%---------------------------------------------------------------------
+\pagestyle{headandfoot}
+\footrule
+\headrule
+\firstpageheader{}{}{}
+\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+
+\begin{document}
+
+% ===== Encabezado institucional =====
+\begin{tabular}{lr}
+    \multirow{2}{*}{\includegraphics[height=1.4cm]{logosergio.png}} &
+    {\textbf{\uni}} \\
+    & {\textbf{\fac}} \\
+    & {\textbf{\dep}} \\
+    & {\textbf{\mat \tema}} \\
+    & {\textit{\autor}} \\
+    & {\textit{}}
+\end{tabular}\\
+\base{19.5cm}\\
+\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Ladino Juan Casas \hfill} \quad 
+\textit{Calificaci\'on}: \base{2cm} \\[6pt]
+
+% ===== TALLER 1 =====
+\section*{Taller 6 (Funciones)}
+
+% -------------------------------------------------------------------
+% LISTA PRINCIPAL DE EJERCICIOS (en lugar de \subsection)
+% -------------------------------------------------------------------
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=*, itemsep=1.0em]
+\item ¿Puede usted, observando la gráfica de una relación, decir si es una función o no? 
+        ¿Y mirando el diagrama sagital? ¿Qué criterios emplea?
+
+\item Dibuje el gráfico de una función constante de $\mathbb{R}$ en $\mathbb{R}$.
+
+\item ¿Son las funciones $\sin, \cos : \mathbb{R}\to\mathbb{R}$ inyectivas? ¿Por qué?
+
+\item Halle criterios para saber, observando sólo la gráfica o sólo el diagrama sagital de una función de $A$ en $B$,
+    \begin{enumerate}[label=\alph*)]
+        \item si es inyectiva, y
+        \item si es sobreyectiva.
+    \end{enumerate}
+\item ¿Es $\varnothing \subseteq A\times B$ una función? 
+      ¿Es $\varnothing$ una función de $A$ en $B$? ¿Por qué?
+
+\item \textbf{Im\'agenes de subconjuntos bajo una funci\'on.}
+Sean $f:A\to B$ una funci\'on y $M,M_1,M_2\subseteq A$. Por definici\'on
+\[
+f(M)=\{\,f(x):x\in M\,\},\qquad \CA{M}=A\setminus M,\qquad \CB{S}=B\setminus S.
+\]
+Pruebe:
+
+\begin{enumerate}[label=\textbf{\alph*)}, topsep=4pt,itemsep=8pt]
+
+% ------------------- (a) -------------------
+\item \textbf{(Monoton\'ia)} Si $M_1\subseteq M_2$, entonces $f(M_1)\subseteq f(M_2)$.
+
+\begin{proof}\leavevmode
+\[
+\begin{aligned}
+y\in f(M_1)
+&\Leftrightarrow (\exists x\in A)\,[x\in M_1\land f(x)=y] \\
+&\Rightarrow (\exists x\in A)\,[x\in M_2\land f(x)=y] \quad(M_1\subseteq M_2)\\
+&\Leftrightarrow y\in f(M_2).
+\end{aligned}
+\]
+\end{proof}
+
+% ------------------- (b) -------------------
+\item \textbf{(Uni\'on finita)} $f(M_1\cup M_2)=f(M_1)\cup f(M_2)$.
+
+\begin{proof}\leavevmode
+\[
+\begin{aligned}
+y\in f(M_1\cup M_2)
+&\Leftrightarrow (\exists x)\,[x\in M_1\cup M_2 \land f(x)=y]\\
+&\Leftrightarrow (\exists x)\,[(x\in M_1\lor x\in M_2)\land f(x)=y]\\
+&\Leftrightarrow \big((\exists x)[x\in M_1\land f(x)=y]\big)\lor
+\big((\exists x)[x\in M_2\land f(x)=y]\big)\\
+&\Leftrightarrow y\in f(M_1)\cup f(M_2).
+\end{aligned}
+\]
+La inclusi\'on rec\'iproca es an\'aloga.
+\end{proof}
+
+% ------------------- (c) -------------------
+\item \textbf{(Uni\'on arbitraria)}
+Para toda colecci\'on no vac\'ia $\mathcal M$ de subconjuntos de $A$,
+\[
+f\!\Big(\bigcup_{M\in\mathcal M}M\Big)\;=\;\bigcup_{M\in\mathcal M} f(M).
+\]
+
+\begin{proof}\leavevmode
+\[
+\begin{aligned}
+y\in f\!\Big(\bigcup_{M\in\mathcal M}M\Big)
+&\Leftrightarrow (\exists x)\,[x\in\bigcup_{M\in\mathcal M}M\land f(x)=y]\\
+&\Leftrightarrow (\exists M\in\mathcal M)(\exists x)\,[x\in M\land f(x)=y]\\
+&\Leftrightarrow (\exists M\in\mathcal M)\,[y\in f(M)]
+\Leftrightarrow y\in \bigcup_{M\in\mathcal M} f(M).
+\end{aligned}
+\]
+\end{proof}
+
+% ------------------- (d) -------------------
+\item \textbf{(Caracterizaci\'on por definici\'on; inyectividad)} 
+\[
+(\forall M\subseteq A)(\forall x\in A)\ \big(f(x)\in f(M)\ \Leftrightarrow\ x\in M\big)
+\quad\text{ssi $f$ es inyectiva.}
+\]
+
+\begin{proof}
+($\Rightarrow$) Sea $x,y\in A$ con $f(x)=f(y)$. Tomando $M=\{x\}$,
+\[
+f(y)\in f(\{x\})\ \Rightarrow\ y\in\{x\}\ \Rightarrow\ y=x.
+\]
+Por definici\'on, $f$ es inyectiva.
+
+($\Leftarrow$) Si $f(x)\in f(M)$, por definici\'on existe $m\in M$ con $f(m)=f(x)$. Si $f$ es inyectiva, $x=m\in M$. El rec\'iproco es inmediato.
+\end{proof}
+
+% ------------------- (e) -------------------
+\item \textbf{(Complemento e inyectividad)}
+\[
+(\forall M\subseteq A)\quad f(\CA{M})\subseteq \CB{f(M)}
+\quad\text{ssi $f$ es inyectiva.}
+\]
+
+\begin{proof}
+($\Leftarrow$) Sea $y\in f(\CA{M})$. Entonces $(\exists x)[x\notin M\land f(x)=y]$. 
+Si $y\in f(M)$, existir\'ia $m\in M$ con $f(m)=y=f(x)$; por inyectividad $m=x$, imposible. Luego $y\notin f(M)$, i.e. $y\in \CB{f(M)}$.
+
+($\Rightarrow$) Tome $M=\{x\}$. Si $f(y)=f(x)$ con $y\neq x$, entonces $y\in \CA{\{x\}}$ y $f(y)\in f(\CA{\{x\}})\subseteq \CB{f(\{x\})}$, contradicci\'on. Por tanto $y=x$ y $f$ es inyectiva.
+\end{proof}
+
+% ------------------- (f) -------------------
+\item \textbf{(Complemento y sobreyectividad)}
+\[
+(\forall M\subseteq A)\quad \CB{f(M)}\subseteq f(\CA{M})
+\quad\text{ssi $f$ es sobreyectiva.}
+\]
+
+\begin{proof}
+($\Leftarrow$) Sea $b\in \CB{f(M)}$. Por sobreyectividad, existe $a\in A$ con $f(a)=b$. Si $a\in M$ entonces $b\in f(M)$, contradicci\'on. Luego $a\in \CA{M}$ y $b=f(a)\in f(\CA{M})$.
+
+($\Rightarrow$) Con $M=\varnothing$ se obtiene $B=\CB{f(\varnothing)}\subseteq f(A)$, esto es, $f$ es sobreyectiva.
+\end{proof}
+
+% ------------------- (g) -------------------
+\item \textbf{(Diferencia e inyectividad)}
+\[
+(\forall M_1,M_2\subseteq A)\quad f(M_1\setminus M_2)=f(M_1)\setminus f(M_2)
+\quad\text{ssi $f$ es inyectiva.}
+\]
+
+\begin{proof}
+Para toda $f$ siempre vale
+\[
+\begin{aligned}
+y\in f(M_1\setminus M_2)
+&\Leftrightarrow (\exists x)[x\in M_1\land x\notin M_2\land f(x)=y]\\
+&\Rightarrow y\in f(M_1)\ \land\ \neg(\exists m\in M_2)\,[f(m)=y]\\
+&\Leftrightarrow y\in f(M_1)\setminus f(M_2).
+\end{aligned}
+\]
+Si $f$ es inyectiva y $y\in f(M_1)\setminus f(M_2)$, existe $x\in M_1$ con $f(x)=y$ y no existe $m\in M_2$ con $f(m)=y$; por inyectividad $x\notin M_2$, as\'i $x\in M_1\setminus M_2$ y $y\in f(M_1\setminus M_2)$.
+
+Rec\'iprocamente, si la igualdad vale para todos $M_1,M_2$, con $M_1=\{x\}$ y $M_2=\{y\}$ tendr\'iamos
+\[
+f(\{x\}\setminus\{y\})=f(\{x\})\setminus f(\{y\}).
+\]
+Si $x\neq y$ y $f(x)=f(y)$, el lado derecho es $\varnothing$ mientras que el izquierdo es $f(\{x\})\neq\varnothing$, contradicci\'on. Luego $f$ es inyectiva.
+\end{proof}
+
+% ------------------- (h) -------------------
+\item \textbf{(Bicondici\'on mon\'otona e inyectividad)}
+\[
+(\forall M_1,M_2\subseteq A)\quad
+\big[M_1\subseteq M_2\ \Leftrightarrow\ f(M_1)\subseteq f(M_2)\big]
+\quad\text{ssi $f$ es inyectiva.}
+\]
+
+\begin{proof}
+($\Leftarrow$) La implicaci\'on $M_1\subseteq M_2\Rightarrow f(M_1)\subseteq f(M_2)$ es el punto (a). 
+Para la inversa, si $f$ es inyectiva y $f(M_1)\subseteq f(M_2)$, entonces para todo $x\in M_1$ se tiene $f(x)\in f(M_2)$; existe $m\in M_2$ con $f(m)=f(x)$ y por inyectividad $x=m\in M_2$. Por tanto $M_1\subseteq M_2$.
+
+($\Rightarrow$) Suponiendo la bicondici\'on para todos $M_1,M_2$, con $M_1=\{x\}$ y $M_2=\{y\}$: si $f(x)=f(y)$, entonces $f(\{x\})\subseteq f(\{y\})$ y $f(\{y\})\subseteq f(\{x\})$, de donde $\{x\}\subseteq\{y\}$ y $\{y\}\subseteq\{x\}$; as\'i $x=y$ e $f$ es inyectiva.
+\end{proof}
+
+\end{enumerate}
+
+% === Propiedades de la preimagen y caracterizaciones ===
+\item Sean $f:A\to B$ una función, $N,N_1,N_2\subseteq B$ y $M\subseteq A$.
+Escribimos $C_A(S)=A\setminus S$ y $C_B(T)=B\setminus T$. Demuestre:
+
+\begin{enumerate}[label=\textbf{\alph*)},itemsep=8pt]
+
+\item \textbf{Monotonía de la preimagen:}
+Si $N_1\subseteq N_2$, entonces $f^{-1}(N_1)\subseteq f^{-1}(N_2)$.
+
+\emph{Prueba.}
+$x\in f^{-1}(N_1)\Leftrightarrow f(x)\in N_1\Rightarrow f(x)\in N_2\Leftrightarrow x\in f^{-1}(N_2)$.\qed
+
+\item \textbf{Unión finita:}
+$f^{-1}(N_1\cup N_2)=f^{-1}(N_1)\cup f^{-1}(N_2)$.
+
+\emph{Prueba.}
+\[
+\begin{aligned}
+x\in f^{-1}(N_1\cup N_2)
+&\Leftrightarrow f(x)\in N_1\cup N_2\\
+&\Leftrightarrow f(x)\in N_1\ \vee\ f(x)\in N_2\\
+&\Leftrightarrow x\in f^{-1}(N_1)\ \vee\ x\in f^{-1}(N_2).
+\end{aligned}
+\]\qed
+
+\item \textbf{Unión arbitraria:}
+Para toda colección $\mathcal N$ de subconjuntos de $B$,
+\[
+f^{-1}\!\Big(\bigcup_{N\in\mathcal N}N\Big)=\bigcup_{N\in\mathcal N} f^{-1}(N).
+\]
+
+\emph{Prueba.}
+$x\in f^{-1}(\bigcup_{N\in\mathcal N}N)\Leftrightarrow f(x)\in\bigcup_{N\in\mathcal N}N\Leftrightarrow
+(\exists N\in\mathcal N)\, f(x)\in N \Leftrightarrow (\exists N\in\mathcal N)\, x\in f^{-1}(N)$.\qed
+
+\item \textbf{Intersección finita:}
+$f^{-1}(N_1\cap N_2)=f^{-1}(N_1)\cap f^{-1}(N_2)$.
+
+\emph{Prueba.}
+\[
+\begin{aligned}
+x\in f^{-1}(N_1\cap N_2)
+&\Leftrightarrow f(x)\in N_1\cap N_2\\
+&\Leftrightarrow f(x)\in N_1\ \wedge\ f(x)\in N_2\\
+&\Leftrightarrow x\in f^{-1}(N_1)\ \wedge\ x\in f^{-1}(N_2).
+\end{aligned}
+\]\qed
+
+\item \textbf{Intersección arbitraria:}
+Para toda colección $\mathcal N$ de subconjuntos de $B$,
+\[
+f^{-1}\!\Big(\bigcap_{N\in\mathcal N}N\Big)=\bigcap_{N\in\mathcal N} f^{-1}(N).
+\]
+
+\emph{Prueba.}
+$x\in f^{-1}(\bigcap_{N\in\mathcal N}N)\Leftrightarrow f(x)\in\bigcap_{N\in\mathcal N}N
+\Leftrightarrow(\forall N\in\mathcal N)\, f(x)\in N\Leftrightarrow (\forall N\in\mathcal N)\, x\in f^{-1}(N)$.\qed
+
+\item \textbf{Diferencia:}
+$f^{-1}(N_1-N_2)=f^{-1}(N_1)-f^{-1}(N_2)$.
+
+\emph{Prueba.}
+\[
+\begin{aligned}
+x\in f^{-1}(N_1-N_2)
+&\Leftrightarrow f(x)\in N_1\ \wedge\ f(x)\notin N_2\\
+&\Leftrightarrow x\in f^{-1}(N_1)\ \wedge\ x\notin f^{-1}(N_2)\\
+&\Leftrightarrow x\in f^{-1}(N_1)-f^{-1}(N_2).
+\end{aligned}
+\]\qed
+
+\item \textbf{Complemento:}
+$f^{-1}(C_B N)=C_A\big(f^{-1}(N)\big)$.
+
+\emph{Prueba.}
+$x\in f^{-1}(C_B N)\Leftrightarrow f(x)\notin N\Leftrightarrow x\notin f^{-1}(N)\Leftrightarrow x\in C_A(f^{-1}(N))$.\qed
+
+\item \textbf{Imagen de la preimagen (inclusión):}
+$f\!\big(f^{-1}(N)\big)\subseteq N$.
+
+\emph{Prueba.}
+Si $y\in f(f^{-1}(N))$, existe $x$ con $x\in f^{-1}(N)$ y $f(x)=y$; pero $x\in f^{-1}(N)\Leftrightarrow f(x)\in N$, así $y\in N$.\qed
+
+\item \textbf{Caracterización de sobreyectividad:}
+\[
+(\forall N\subseteq B)\quad f(f^{-1}(N))=N
+\quad\text{ssi $f$ es sobreyectiva.}
+\]
+
+\emph{Prueba.}
+($\Rightarrow$) Con $N=B$, se obtiene $f(A)=B$.  
+($\Leftarrow$) La inclusión $\subseteq$ es (h). Para la opuesta, si $f$ es sobreyectiva y $y\in N$, elija $x\in A$ con $f(x)=y$; entonces $x\in f^{-1}(N)$ y $y=f(x)\in f(f^{-1}(N))$.\qed
+
+\item \textbf{Subconjunto “siempre”:}
+$M\subseteq f^{-1}(f(M))$.
+
+\emph{Prueba.}
+Si $x\in M$, entonces $f(x)\in f(M)$; por definición, $x\in f^{-1}(f(M))$.\qed
+
+\item \textbf{Caracterización de inyectividad:}
+\[
+(\forall M\subseteq A)\quad M=f^{-1}(f(M))
+\quad\text{ssi $f$ es inyectiva.}
+\]
+
+\emph{Prueba.}
+($\Leftarrow$) Para toda $f$ ya sabemos $M\subseteq f^{-1}(f(M))$ (j). Si $f$ es inyectiva y $x\in f^{-1}(f(M))$, existe $m\in M$ con $f(x)=f(m)$; por inyectividad $x=m\in M$.  
+($\Rightarrow$) Tomando $M=\{x\}$ se tiene $\{x\}=f^{-1}(f(\{x\}))$. Si $f(x)=f(y)$, entonces $y\in f^{-1}(f(\{x\}))=\{x\}$, luego $y=x$; así $f$ es inyectiva.\qed
+
+\item \textbf{Orden reflejado por la preimagen y sobreyectividad:}
+\[
+(\forall N_1,N_2\subseteq B)\quad
+\big[N_1\subseteq N_2\ \Leftrightarrow\ f^{-1}(N_1)\subseteq f^{-1}(N_2)\big]
+\quad\text{ssi $f$ es sobreyectiva.}
+\]
+
+\emph{Prueba.}
+($\Leftarrow$) Si $f$ es sobreyectiva y $f^{-1}(N_1)\subseteq f^{-1}(N_2)$, sea $y\in N_1$. Elija $x\in A$ con $f(x)=y$. Entonces $x\in f^{-1}(N_1)$ y por la hipótesis $x\in f^{-1}(N_2)$, esto es $f(x)=y\in N_2$. Concluye $N_1\subseteq N_2$.  
+La implicación $N_1\subseteq N_2\Rightarrow f^{-1}(N_1)\subseteq f^{-1}(N_2)$ es el punto (a).
+
+($\Rightarrow$) Suponga la bicondición. Para $S\subseteq B$ se tiene siempre $f^{-1}(S)\subseteq f^{-1}(f(f^{-1}(S)))$; por hipótesis, $S\subseteq f(f^{-1}(S))$. Junto con (h) se deduce $f(f^{-1}(S))=S$ para todo $S$, y por (i) $f$ es sobreyectiva.\qed
+
+\item \textbf{Intersección con preimagen:}
+\[
+f\big(M\cap f^{-1}(N)\big)=f(M)\cap N.
+\]
+
+\emph{Prueba.}
+$\subseteq$: si $y\in f(M\cap f^{-1}(N))$, existe $x\in M\cap f^{-1}(N)$ con $f(x)=y$; entonces $y\in f(M)$ y, como $x\in f^{-1}(N)$, también $y=f(x)\in N$.  
+$\supseteq$: si $y\in f(M)\cap N$, existe $x\in M$ con $f(x)=y$ y, como $y\in N$, se tiene $x\in f^{-1}(N)$. Luego $x\in M\cap f^{-1}(N)$ y $y\in f(M\cap f^{-1}(N))$.\qed
+
+\end{enumerate}
+
+
+%__________________8
+\item Sea $f:A\to B$; definimos otra función
+\[
+\hat f:\mathcal P(A)\to\mathcal P(B), 
+\qquad \text{así: si } M\in\mathcal P(A),\quad 
+\hat f(M)=\{\,f(x)\mid x\in M\,\}.
+\]
+Demuestre que:
+\begin{enumerate}[label=\alph*)]
+  \item $\hat f$ es uno a uno si y sólo si $f$ es uno a uno.
+  \item $\hat f$ es sobreyectiva si y sólo si $f$ es sobreyectiva.
+\end{enumerate}
+\begin{enumerate}[label=\textbf{\alph*)}]
+\item \textbf{$\hat f$ es inyectiva $\Leftrightarrow$ $f$ es inyectiva.}
+
+\begin{proof}
+($\Rightarrow$) Suponga que $\hat f$ es inyectiva. Si $f(x)=f(y)$, entonces
+\[
+\hat f(\{x\})=\{f(x)\}=\{f(y)\}=\hat f(\{y\}).
+\]
+Por la inyectividad de $\hat f$, $\{x\}=\{y\}$ y por tanto $x=y$. Así, $f$ es inyectiva.
+
+($\Leftarrow$) Suponga que $f$ es inyectiva y que $\hat f(M_1)=\hat f(M_2)$.
+Sea $x\in M_1$. Entonces $f(x)\in \hat f(M_1)=\hat f(M_2)$, de modo que
+existe $y\in M_2$ con $f(y)=f(x)$. Por inyectividad de $f$, $y=x$, luego $x\in M_2$.
+Así $M_1\subseteq M_2$. Intercambiando los papeles de $M_1,M_2$ se obtiene
+$M_2\subseteq M_1$, y por tanto $M_1=M_2$. Luego $\hat f$ es inyectiva.
+\end{proof}
+
+\item \textbf{$\hat f$ es sobreyectiva $\Leftrightarrow$ $f$ es sobreyectiva.}
+
+\begin{proof}
+($\Rightarrow$) Si $\hat f$ es sobreyectiva, existe $M\subseteq A$ tal que
+$\hat f(M)=\mathcal P(B)$ cubre en particular a $B$; basta notar que
+\[
+B=\hat f(M)\supseteq f(M)\subseteq f(A)\subseteq B,
+\]
+por lo que $f(A)=B$ y $f$ es sobreyectiva.
+
+(\emph{Versión estándar y más directa}): como $\hat f$ es sobreyectiva, existe $M\subseteq A$ con $\hat f(M)=B$; entonces $B=f(M)\subseteq f(A)\subseteq B$, luego $f(A)=B$.
+
+($\Leftarrow$) Si $f$ es sobreyectiva, entonces para todo $N\subseteq B$ se cumple
+\[
+\hat f\big(f^{-1}(N)\big)=f\big(f^{-1}(N)\big)=N,
+\]
+ya que $f(f^{-1}(N))=N$ cuando $f$ es sobreyectiva. Así, dado cualquier
+$N\in\mathcal P(B)$, elige $M=f^{-1}(N)\subseteq A$ y se tiene $\hat f(M)=N$.
+Por lo tanto, $\hat f$ es sobreyectiva.
+\end{proof}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+\end{document}

@@ -55,7 +55,7 @@
     & {\textit{}}
 \end{tabular}\\
 \base{19.5cm}\\
-\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Sebastian Ladino Mendieta \hfill} \quad 
+\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Ladino Juan Casas \hfill} \quad 
 \textit{Calificación}: \base{2cm} \\[6pt]
 
 % ======================================================
@@ -139,7 +139,7 @@ $E_n=\{\text{pares}\}\ \cup\ \{m\in\mathbb Z:\ |m|\le n\ \text{y $m$ impar}\}$.
 \end{enumerate}
 
 % ---------- PROBLEMA 3 ----------
-\question \textbf{(3) Distribuciones de $\cap$ y $\cup$ sobre $\bigcup$ y $\bigcap$}
+\question \textbf{(3) Distributivas con familias}
 
 \textbf{(i)} \quad $
 M \cap \Big( \displaystyle\bigcup_{A\in\mathcal C} A \Big)
@@ -148,15 +148,16 @@ $
 \medskip
 
 Tome $x$ arbitrario.
-\begin{itemize}
-  \item $x \in M \cap \Big(\displaystyle\bigcup_{A\in\mathcal C} A\Big)$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ x \in \displaystyle\bigcup_{A\in\mathcal C} A$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ \exists A \in \mathcal C \ (x \in A)$\\[2pt]
-  $\Leftrightarrow\ \exists A \in \mathcal C \ (x \in M \cap A)$\\[2pt]
-  $\Leftrightarrow\ x \in \displaystyle\bigcup_{A\in\mathcal C} (M \cap A)$.
-\end{itemize}
-Como las condiciones son equivalentes, se obtiene la igualdad.
-\medskip
+\[
+\begin{aligned}
+x \in M \cap \Big(\bigcup_{A\in\mathcal C} A\Big)
+&\Leftrightarrow (x\in M)\land\big(x\in\textstyle\bigcup_{A\in\mathcal C}A\big)\quad(\text{def. }\cap)\\
+&\Leftrightarrow (x\in M)\land\exists A\in\mathcal C\,(x\in A)\quad(\text{def. }\cup)\\
+&\Leftrightarrow \exists A\in\mathcal C\,\big((x\in M)\land(x\in A)\big)\quad(p\land\exists\ \iff\ \exists(p\land\cdot))\\
+&\Leftrightarrow \exists A\in\mathcal C\,(x\in M\cap A)\quad(\text{def. }\cap)\\
+&\Leftrightarrow x\in\textstyle\bigcup_{A\in\mathcal C}(M\cap A)\quad(\text{def. }\cup).
+\end{aligned}
+\]
 
 \textbf{(ii)} \quad $
 M \cup \Big( \displaystyle\bigcap_{A\in\mathcal C} A \Big)
@@ -165,23 +166,23 @@ $
 \medskip
 
 Tome $x$ arbitrario.
-\begin{itemize}
-  \item $x \in M \cup \Big(\displaystyle\bigcap_{A\in\mathcal C} A\Big)$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ o }\ x \in \displaystyle\bigcap_{A\in\mathcal C} A$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ o }\ \forall A \in \mathcal C \ (x \in A)$\\[2pt]
-  $\Rightarrow\ \forall A \in \mathcal C \ \big(x \in M \ \text{ o }\ x \in A\big)$\\[2pt]
-  $\Leftrightarrow\ \forall A \in \mathcal C \ (x \in M \cup A)$\\[2pt]
-  $\Leftrightarrow\ x \in \displaystyle\bigcap_{A\in\mathcal C} (M \cup A)$.
-\end{itemize}
-La implicación inversa también vale: si $x\in\bigcap_{A}(M\cup A)$ y $x\notin M$, entonces $x\in A$ para todo $A$, es decir $x\in\bigcap_A A$; por tanto $x\in M\cup\bigcap_A A$.
-\bigskip
-
+\[
+\begin{aligned}
+x\in M\cup\Big(\bigcap_{A\in\mathcal C}A\Big)
+&\Leftrightarrow (x\in M)\vee\big(x\in\textstyle\bigcap_{A\in\mathcal C}A\big)\quad(\text{def. }\cup)\\
+&\Leftrightarrow (x\in M)\vee\forall A\in\mathcal C\,(x\in A)\quad(\text{def. }\cap)\\
+&\Leftrightarrow \neg\big(\neg(x\in M)\land\neg\forall A\,(x\in A)\big)\quad(\text{De Morgan prop.})\\
+&\Leftrightarrow \neg\big(\neg(x\in M)\land\exists A\,\neg(x\in A)\big)\quad(\neg\forall\iff\exists\neg)\\
+&\Leftrightarrow \neg\,\exists A\,\big(\neg(x\in M)\land\neg(x\in A)\big)\quad(\text{mover }\exists)\\
+&\Leftrightarrow \forall A\,\neg\big(\neg(x\in M)\land\neg(x\in A)\big)\quad(\neg\exists\iff\forall\neg)\\
+&\Leftrightarrow \forall A\,\big((x\in M)\vee(x\in A)\big)\quad(\text{De Morgan prop.})\\
+&\Leftrightarrow x\in\textstyle\bigcap_{A\in\mathcal C}(M\cup A)\quad(\text{def. }\cap).
+\end{aligned}
+\]
 % ---------- PROBLEMA 4 ----------
-\question \textbf{(4) Diferencia relativa con uniones e intersecciones (De Morgan dentro de $M$)}
+\question \textbf{(4) De Morgan relativos en $M$ (familias)}
 
-Recordemos: \;
-$x \in M - A \ \Leftrightarrow\ x \in M \ \text{ y }\ x \notin A$.
-\medskip
+Recordemos: $x\in M-A\ \Leftrightarrow\ (x\in M)\land\neg(x\in A)$.
 
 \textbf{(i)} \quad $
 M - \Big( \displaystyle\bigcup_{A\in\mathcal C} A \Big)
@@ -190,15 +191,17 @@ $
 \medskip
 
 Tome $x$ arbitrario.
-\begin{itemize}
-  \item $x \in M - \Big(\displaystyle\bigcup_{A\in\mathcal C} A\Big)$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ x \notin \displaystyle\bigcup_{A\in\mathcal C} A$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ \forall A \in \mathcal C \ (x \notin A)$\\[2pt]
-  $\Leftrightarrow\ \forall A \in \mathcal C \ \big(x \in M \ \text{ y }\ x \notin A\big)$\\[2pt]
-  $\Leftrightarrow\ \forall A \in \mathcal C \ (x \in M - A)$\\[2pt]
-  $\Leftrightarrow\ x \in \displaystyle\bigcap_{A\in\mathcal C} (M - A)$.
-\end{itemize}
-\medskip
+\[
+\begin{aligned}
+x\in M-\Big(\bigcup_{A\in\mathcal C}A\Big)
+&\Leftrightarrow (x\in M)\land\neg\big(x\in\textstyle\bigcup_{A\in\mathcal C}A\big)\quad(\text{def. }-)\\
+&\Leftrightarrow (x\in M)\land\neg\exists A\in\mathcal C\,(x\in A)\quad(\text{def. }\cup)\\
+&\Leftrightarrow (x\in M)\land\forall A\in\mathcal C\,\neg(x\in A)\quad(\neg\exists\iff\forall\neg)\\
+&\Leftrightarrow \forall A\in\mathcal C\,\big((x\in M)\land\neg(x\in A)\big)\quad(p\land\forall\iff\forall(p\land\cdot))\\
+&\Leftrightarrow \forall A\in\mathcal C\,(x\in M-A)\quad(\text{def. }-)\\
+&\Leftrightarrow x\in\textstyle\bigcap_{A\in\mathcal C}(M-A)\quad(\text{def. }\cap).
+\end{aligned}
+\]
 
 \textbf{(ii)} \quad $
 M - \Big( \displaystyle\bigcap_{A\in\mathcal C} A \Big)
@@ -207,14 +210,17 @@ $
 \medskip
 
 Tome $x$ arbitrario.
-\begin{itemize}
-  \item $x \in M - \Big(\displaystyle\bigcap_{A\in\mathcal C} A\Big)$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ x \notin \displaystyle\bigcap_{A\in\mathcal C} A$\\[2pt]
-  $\Leftrightarrow\ x \in M \ \text{ y }\ \exists A \in \mathcal C \ (x \notin A)$\\[2pt]
-  $\Leftrightarrow\ \exists A \in \mathcal C \ \big(x \in M \ \text{ y }\ x \notin A\big)$\\[2pt]
-  $\Leftrightarrow\ \exists A \in \mathcal C \ (x \in M - A)$\\[2pt]
-  $\Leftrightarrow\ x \in \displaystyle\bigcup_{A\in\mathcal C} (M - A)$.
-\end{itemize}
+\[
+\begin{aligned}
+x\in M-\Big(\bigcap_{A\in\mathcal C}A\Big)
+&\Leftrightarrow (x\in M)\land\neg\big(x\in\textstyle\bigcap_{A\in\mathcal C}A\big)\quad(\text{def. }-)\\
+&\Leftrightarrow (x\in M)\land\neg\forall A\in\mathcal C\,(x\in A)\quad(\text{def. }\cap)\\
+&\Leftrightarrow (x\in M)\land\exists A\in\mathcal C\,\neg(x\in A)\quad(\neg\forall\iff\exists\neg)\\
+&\Leftrightarrow \exists A\in\mathcal C\,\big((x\in M)\land\neg(x\in A)\big)\quad(p\land\exists\iff\exists(p\land\cdot))\\
+&\Leftrightarrow \exists A\in\mathcal C\,(x\in M-A)\quad(\text{def. }-)\\
+&\Leftrightarrow x\in\textstyle\bigcup_{A\in\mathcal C}(M-A)\quad(\text{def. }\cup).
+\end{aligned}
+\]
 
 % ---------- PROBLEMA 5 ----------
 \question \textbf{(5)} Si $A_n=\Big(-\frac1n,\,3+\frac1n\Big)$, entonces
@@ -299,5 +305,6 @@ Luego $\bigcap\mathcal B\subseteq\bigcap\mathcal A$.
 \hfill$\square$
 \end{enumerate}
 \end{questions}
+
 
 \end{document}
