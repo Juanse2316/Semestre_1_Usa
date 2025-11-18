@@ -1,0 +1,483 @@
+\documentclass[12pt,letterpaper]{exam}
+
+\usepackage[left=2cm,top=2cm,right=2cm,bottom=2.5cm]{geometry}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{001C}{}
+\usepackage[spanish,activeacute]{babel}
+\decimalpoint
+
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{latexsym,amsmath,amsthm,amssymb,amsfonts,bbm,dsfont}
+\usepackage{mathrsfs}
+
+% --- TikZ ---
+\usepackage{tikz}
+\usetikzlibrary{calc,arrows.meta,intersections,positioning}
+\tikzset{
+  plane/.style={fill=gray!12, draw=black!50},
+  line3d/.style={line width=0.9pt},
+  pt/.style={circle,fill=black,inner sep=1.4pt},
+  label/.style={font=\small}
+}
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+\usepackage{adjustbox}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[font=small,labelfont=bf,textfont=it]{caption}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{fancybox}
+
+\graphicspath{{../assets/}{../Talleres_fundamentos/}{./}}
+
+%--------------------------------------------------------------------
+\newcommand{\base}[1]{\underline{\hspace{#1}}}
+\newcommand{\uni}{Universidad Sergio Arboleda}
+\newcommand{\fac}{\normalsize{Escuela de Ciencias Ex\'actas e Ingenier\'ia}}
+\newcommand{\dep}{Matem\'aticas}
+\newcommand{\mat}{Materia}
+\newcommand{\tema}{}
+\newcommand{\autor}{Profesor}
+\newcommand{\espacio}[1]{\vspace{#1}}
+\renewcommand{\arraystretch}{1.15}
+
+
+
+%%%% AQUÍ DEFINES EL ENTORNO proposition %%%%
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposición}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{headandfoot}
+\footrule
+\headrule
+\firstpageheader{}{}{}
+\firstpagefooter{}{\thepage $\,$ de \numpages}{}
+\runningfooter{\uni}{\thepage $\,$ de \numpages}{}
+
+
+
+\begin{document}
+% ===== Encabezado institucional =====
+\begin{tabular}{lr}
+    \multirow{2}{*}{\includegraphics[height=1.2cm]{logosergio.png}} &
+    {\textbf{\uni}} \\
+    & {\textbf{\fac}} \\
+    & {\textbf{\dep}} \\
+    & {\textbf{\mat \tema}} \\
+    & {\textit{\autor}} \\
+    & {\textit{}}
+\end{tabular}\\
+\base{19.5cm}\\
+% \textbf{Nombre}: \base{13.2cm} \quad \textit{Calificación}: \base{2cm} \\[6pt]
+\textbf{Nombre}: \makebox[11.2cm]{\hfill Juan Sebastian Ladino Mendieta \hfill} \quad 
+\textit{Calificaci\'on}: \base{2cm} \\[6pt]
+
+\section{Taller (cuadrilateros)}
+
+\subsection{Definiciones}
+\begin{enumerate}
+    \item Un cuadrilátero es convexo si y solo si sus diagonales se intersectan
+    \item Un cuadrilátero es convexo si y solo si el interio de cada angulo del cuadrilátero
+          contiene a un vertice del cuadrilátero.
+    \item Un cuadrilátero no es convexo si y solo si se puede determinar un triángulo
+          con los vertices del cuadrilátero de modo que el cuarto vertice está en el interior 
+          del triángulo construido.
+    \item Un cuadrilátero es convexo si y solo si cada recta que contien a cada lado del
+          cuadrilátero deja a las otras dos vértices en el mismo semiplano.
+\end{enumerate}
+
+\subsection{Construción}
+\begin{proposition}
+Bajo los postulados de incidencia, de la regla, de separación del plano y los
+teoremas de segmentación en semiplanos, existe al menos un cuadrilátero convexo usando la definición 4.
+\end{proposition}
+
+\begin{proof}
+Por el postulado del plano y el de la mínima cantidad de puntos, existe un plano
+$\alpha$ con al menos tres puntos no colineales. Sean $O,P,Q\in\alpha$ no colineales y
+definamos las rectas
+\[
+  \ell = \overleftrightarrow{OP}, \qquad m = \overleftrightarrow{OQ}.
+\]
+Por el postulado de la recta, $\ell$ y $m$ son rectas bien definidas y se cortan en $O$.
+
+Usando el postulado de la regla sobre $\ell$ y $m$, elegimos:
+\[
+ A,C \in \ell \setminus \{O\} \quad\text{con}\quad A-O-C,\qquad
+ B,D \in m \setminus \{O\} \quad\text{con}\quad B-O-D.
+\]
+Consideramos ahora los cuatro segmentos
+\[
+  AB,\; BC,\; CD,\; DA
+\]
+y definimos el cuadrilátero $ABCD$ como la unión de dichos segmentos. Con una elección
+genérica de $A,B,C,D$, los lados sólo se intersectan en sus vértices,
+de modo que $ABCD$ es efectivamente un cuadrilátero.
+
+Resta probar que $ABCD$ es convexo:
+para cada lado, la recta que lo contiene deja a los otros dos vértices en el mismo
+semiplano.
+
+Sea, por ejemplo, el lado $AB$ y sea $r = \overleftrightarrow{AB}$ la recta que lo
+contiene. Por el postulado de separación del plano, $r$ divide al plano $\alpha$ en
+dos semiplanos. Queremos ver que los puntos $C$ y $D$ quedan en el mismo semiplano
+determinado por $r$.
+
+Primero probamos que $CD \cap r = \emptyset$.
+
+Observemos que $A \in \ell \setminus m$ y $B \in m \setminus \ell$. Por tanto, la
+recta $r = \overleftrightarrow{AB}$ no puede coincidir ni con $\ell$ ni con $m$.
+Además, como $B \in r \cap m$, del postulado de la recta se sigue que
+\[
+r \cap m = \{B\},
+\]
+pues si hubiese otro punto $X \in r \cap m$ con $X \neq B$, las rectas $r$ y $m$
+tendrían dos puntos comunes $B$ y $X$, y por el postulado de la recta serían la misma
+recta, contradiciendo que $A \notin m$.
+
+Ahora usamos el postulado de la regla sobre la recta $m$. Sea $f_m : m \to \mathbb{R}$
+la biyección dada por dicho postulado, y fijamos la notación de modo que
+\[
+f_m(O) = 0,\qquad f_m(C) < 0 < f_m(D).
+\]
+Como hay infinitos puntos en $m$, podemos elegir $B$ de forma que
+\[
+f_m(B) < f_m(C) < 0 < f_m(D),
+\]
+manteniendo la condición $B-O-D$ (esto se cumple porque basta que $f_m(B) < 0 < f_m(D)$
+para que $O$ esté entre $B$ y $D$).
+
+Por definición de segmento, los puntos del segmento $CD$ son exactamente aquellos
+$X \in m$ tales que
+\[
+f_m(C) \leq f_m(X) \leq f_m(D).
+\]
+Como $f_m(B) < f_m(C)$, se sigue que $B \notin CD$.
+
+Supongamos ahora, para obtener una contradicción, que existe un punto
+$X \in CD \cap r$. Entonces $X \in m$ (porque $C,D \in m$ y $CD \subset m$) y
+$X \in r$, de modo que
+\[
+X \in r \cap m.
+\]
+Pero ya vimos que $r \cap m = \{B\}$, así que $X = B$. Esto contradice el hecho de que
+$B \notin CD$. Por tanto,
+\[
+CD \cap r = \emptyset.
+\]
+
+Finalmente, aplicamos el teorema de \emph{segmento contenido en un semiplano} a la
+recta $r$ y al segmento $CD$. Como $CD \cap r = \emptyset$, se concluye que los
+extremos $C$ y $D$ están del mismo lado de $r$, es decir, pertenecen al mismo
+semiplano determinado por la recta que contiene al lado $AB$.
+
+De manera similar:
+\begin{itemize}
+  \item $\overleftrightarrow{BC}$ no corta al segmento $AD$, luego $A$ y $D$ quedan
+        en el mismo semiplano.
+  \item $\overleftrightarrow{CD}$ no corta al segmento $AB$, luego $A$ y $B$ quedan
+        en el mismo semiplano.
+  \item $\overleftrightarrow{DA}$ no corta al segmento $BC$, luego $B$ y $C$ quedan
+        en el mismo semiplano.
+\end{itemize}
+
+Por tanto, $ABCD$ es un cuadrilátero convexo según la definición dada.
+\end{proof}
+
+
+\subsection{ángulos con cada vértice dentro}
+\begin{proposition}[Caracterización angular de la convexidad]
+Sea $ABCD$ un cuadrilátero. Consideremos las dos afirmaciones:
+
+\begin{enumerate}
+  \item[(i)] $ABCD$ es convexo si y sólo si cada recta que contiene a cada lado del
+  cuadrilátero deja a los otros dos vértices en el mismo semiplano.
+  
+  \item[(ii)] $ABCD$ es convexo si y sólo si el interior de cada ángulo del
+  cuadrilátero contiene a un vértice del cuadrilátero (el vértice opuesto).
+\end{enumerate}
+
+Entonces \textbf{(i) y (ii) son equivalentes}.
+\end{proposition}
+
+\begin{proof}
+Recordemos la definición del interior de un ángulo:  
+dado un ángulo $\angle XAY$ determinado por $\overrightarrow{AX}$ y
+$\overrightarrow{AY}$, un punto $P$ está en el interior de $\angle XAY$ si y sólo si
+
+\begin{itemize}
+  \item $P$ está en el mismo semiplano que $X$ respecto de la recta $\overleftrightarrow{AY}$, y
+  \item $P$ está en el mismo semiplano que $Y$ respecto de la recta $\overleftrightarrow{AX}$.
+\end{itemize}
+
+En particular, para el ángulo en $A$ del cuadrilátero $ABCD$ tomamos el ángulo
+$\angle DAB$, determinado por $\overrightarrow{AD}$ y
+$\overrightarrow{AB}$.
+
+\medskip
+\noindent\textbf{(i) $\Rightarrow$ (ii).}  
+Supongamos que se cumple (i), es decir, que para cada lado la recta que lo contiene
+deja a los otros dos vértices en el mismo semiplano.
+
+Consideremos el ángulo en el vértice $A$, esto es, $\angle DAB$, y veamos que
+su interior contiene al vértice opuesto $C$.
+
+Por la condición (i) aplicada al lado $AB$, la $\overleftrightarrow{AB}$
+deja a $C$ y $D$ en el mismo semiplano.  
+Por la condición (i) aplicada al lado $AD$, la $\overleftrightarrow{AD}$
+deja a $B$ y $C$ en el mismo semiplano.
+
+De acuerdo con la definición de interior de $\angle DAB$, esto significa exactamente
+que $C$ está en el interior de $\angle DAB$:
+
+\begin{itemize}
+  \item $C$ está en el mismo semiplano que $D$ respecto de $\overleftrightarrow{AB}$;
+  \item $C$ está en el mismo semiplano que $B$ respecto de $\overleftrightarrow{AD}$.
+\end{itemize}
+
+Por tanto, el vértice opuesto $C$ pertenece al interior del ángulo en $A$.
+
+Repitiendo el mismo razonamiento para los demás vértices:
+
+\begin{itemize}
+  \item en el ángulo en $B$ (ángulo $\angle ABC$) el vértice opuesto $D$
+        pertenece a su interior;
+  \item en el ángulo en $C$ (ángulo $\angle BCD$) el vértice opuesto $A$
+        pertenece a su interior;
+  \item en el ángulo en $D$ (ángulo $\angle CDA$) el vértice opuesto $B$
+        pertenece a su interior.
+\end{itemize}
+
+Así se verifica la condición (ii): el interior de cada ángulo del cuadrilátero
+contiene a un vértice del cuadrilátero (el opuesto).
+
+\medskip
+\noindent\textbf{(ii) $\Rightarrow$ (i).}  
+Ahora supongamos que se cumple (ii), esto es, que el interior de cada ángulo del
+cuadrilátero contiene al vértice opuesto.
+
+Queremos probar que se cumple (i): para cada lado, la recta que lo contiene deja a
+los otros dos vértices en el mismo semiplano.
+
+Tomemos el lado $AB$ y veamos que la recta $r = \overleftrightarrow{AB}$ deja a
+$C$ y $D$ en el mismo semiplano.
+
+Por hipótesis, el vértice opuesto a $A$, que es $C$, está en el interior del
+ángulo en $A$, es decir, en el interior de $\angle DAB$.  
+Por la definición de interior de ángulo, esto implica que:
+
+\begin{itemize}
+  \item $C$ está en el mismo semiplano que $D$ respecto de la $\overleftrightarrow{AB}$.
+\end{itemize}
+
+También por hipótesis, el vértice opuesto a $B$, que es $D$, está en el interior
+del ángulo en $B$, es decir, en el interior de $\angle ABC$. Esto implica que:
+
+\begin{itemize}
+  \item $D$ está en el mismo semiplano que $C$ respecto de la $\overleftrightarrow{AB}$.
+\end{itemize}
+
+Juntando ambas afirmaciones, concluimos que $C$ y $D$ están en el mismo semiplano
+respecto de la recta que contiene al lado $AB$.
+
+El mismo razonamiento se aplica a los demás lados:
+
+\begin{itemize}
+  \item Para el lado $BC$: el vértice opuesto a $B$ es $D$ y el vértice opuesto a
+        $C$ es $A$. De que $D$ está en el interior de $\angle ABC$ y $A$ está en
+        el interior de $\angle BCD$ se deduce que $A$ y $D$ están en el mismo
+        semiplano respecto de la recta $\overleftrightarrow{BC}$.
+  \item Para el lado $CD$: del hecho de que $A$ está en el interior de $\angle BCD$
+        y $B$ en el interior de $\angle CDA$ se deduce que $A$ y $B$ están en el
+        mismo semiplano respecto de la recta $\overleftrightarrow{CD}$.
+  \item Para el lado $DA$: del hecho de que $B$ está en el interior de $\angle CDA$
+        y $C$ en el interior de $\angle DAB$ se deduce que $B$ y $C$ están en el
+        mismo semiplano respecto de la recta $\overleftrightarrow{DA}$.
+\end{itemize}
+
+Por lo tanto, para cada lado del cuadrilátero, la recta que lo contiene deja a los
+otros dos vértices en el mismo semiplano. Es decir, se cumple la condición (i).
+\end{proof}
+
+\subsection{Diagonales}
+\begin{proposition}[Caracterización por diagonales]
+Sea $ABCD$ un cuadrilátero. Entonces $ABCD$ es convexo en el sentido de la
+definición de semiplanos si y sólo si sus diagonales $AC$ y $BD$ se intersectan
+en un punto del interior del cuadrilátero.
+\end{proposition}
+
+\begin{proof}
+($\Rightarrow$) Supongamos que $ABCD$ es convexo según la definición de
+semiplanos:
+para cada lado, la recta que lo contiene deja a los otros dos vértices en el
+mismo semiplano.
+
+Por la proposición de caracterización angular de la convexidad, esto equivale a
+que el interior de cada ángulo del cuadrilátero contiene al vértice opuesto. En
+particular:
+\[
+  C \text{ está en el interior de } \angle DAB
+  \quad\text{y}\quad
+  A \text{ está en el interior de } \angle BCD.
+\]
+
+Consideremos la recta $p = \overleftrightarrow{AC}$ y los dos semiplanos que
+determina. Probaremos que $B$ y $D$ están en semiplanos opuestos respecto de
+$p$.
+
+Del hecho de que $C$ está en el interior de $\angle DAB$ se sigue, por la
+definición de interior de ángulo, que:
+\begin{itemize}
+  \item $C$ está en el mismo semiplano que $D$ respecto de la recta
+        $\overleftrightarrow{AB}$, y
+  \item $C$ está en el mismo semiplano que $B$ respecto de la recta
+        $\overleftrightarrow{AD}$.
+\end{itemize}
+Análogamente, de que $A$ está en el interior de $\angle BCD$ se obtiene que:
+\begin{itemize}
+  \item $A$ está en el mismo semiplano que $B$ respecto de la recta
+        $\overleftrightarrow{CD}$, y
+  \item $A$ está en el mismo semiplano que $D$ respecto de la recta
+        $\overleftrightarrow{CB}$.
+\end{itemize}
+
+Estas relaciones de semiplanos implican que, al trazar la recta $p$ que une a
+$A$ y $C$, los puntos $B$ y $D$ quedan forzosamente en semiplanos distintos de
+$p$: si $B$ y $D$ estuvieran en el mismo semiplano respecto de $p$, entonces
+uno de los ángulos anteriores no podría contener al vértice opuesto en su
+interior (contradiría al menos una de las condiciones “estar en el mismo
+semiplano que uno de los lados” en la definición del interior de ángulo).
+
+Por lo tanto, $B$ y $D$ están en semiplanos opuestos respecto de $\overleftrightarrow{AC}$.
+Aplicando ahora el teorema de \emph{extremos de segmento en semiplanos opuestos}
+a la recta $p$ y al segmento $BD$, concluimos que
+\[
+  BD \cap p \neq \emptyset.
+\]
+Es decir, el segmento $BD$ corta a la recta $\overleftrightarrow{AC}$ en un
+punto $E$. Como $A$ y $C$ están en $p$ y el cuadrilátero es convexo (la región
+determinada por los lados es intersección de semiplanos), el punto de
+intersección $E$ pertenece a los segmentos $AC$ y $BD$ y está en el interior
+del cuadrilátero. Así,
+\[
+  E \in AC \cap BD,
+\]
+es decir, las diagonales se intersectan.
+
+\medskip
+($\Leftarrow$) Recíprocamente, supongamos que las diagonales $AC$ y $BD$ se
+cortan en un punto $E$ que pertenece al interior del cuadrilátero.
+
+El interior del cuadrilátero se define como la intersección de los cuatro
+semiplanos determinados por las rectas que contienen a los lados, tomando en
+cada caso el semiplano que contiene “hacia adentro” la figura. El hecho de que
+$E$ esté en el interior significa que $E$ pertenece simultáneamente a los
+cuatro semiplanos elegidos.
+
+Consideremos, por ejemplo, la recta $r = \overleftrightarrow{AB}$. Como $E$
+está en el semiplano “interior” respecto de $r$, y $C$ y $D$ también pertenecen
+al interior del cuadrilátero, ninguno de los segmentos $CE$ o $DE$ puede cortar
+a $r$ fuera de $A$ o $B$. En particular, el segmento $CD$ no corta a la recta
+$r$ en ningún punto. Por el teorema de \emph{segmento contenido en un
+semiplano}, se concluye que $C$ y $D$ están en el mismo semiplano respecto de
+$\overleftrightarrow{AB}$.
+
+Repitiendo el mismo razonamiento para las rectas que contienen a los otros
+lados ($\overleftrightarrow{BC}$, $\overleftrightarrow{CD}$ y
+$\overleftrightarrow{DA}$), obtenemos que, para cada lado del cuadrilátero, la
+recta que lo contiene deja a los otros dos vértices del mismo lado.
+
+Esto es exactamente la definición de cuadrilátero convexo en términos de
+semiplanos. Por lo tanto, $ABCD$ es convexo.
+\end{proof}
+
+\subsection{Vértice dentro de un triángulo}
+
+\begin{proposition}[Caracterización por un vértice en un triángulo]
+Sea $ABCD$ un cuadrilátero. Entonces $ABCD$ no es convexo si y sólo si
+existe un triángulo cuyos vértices son tres vértices del cuadrilátero tal que
+el cuarto vértice está en el interior de dicho triángulo.
+\end{proposition}
+
+\begin{proof}
+($\Leftarrow$) Supongamos primero que existen tres vértices del cuadrilátero
+que forman un triángulo y que el cuarto vértice está en el interior de dicho
+triángulo. Re-etiquetando si es necesario, podemos suponer que:
+
+\[
+\text{el triángulo es } \triangle ABC \quad\text{y el cuarto vértice es } D,
+\]
+de modo que $D$ está en el interior de $\triangle ABC$.
+
+Por la descripción del interior de un triángulo como intersección de tres
+semiplanos, el hecho de que $D$ esté en el interior de $\triangle ABC$
+equivale a que $D$ está:
+
+\begin{itemize}
+  \item en el mismo semiplano que $C$ respecto de la recta $\overleftrightarrow{AB}$,
+  \item en el mismo semiplano que $B$ respecto de la recta $\overleftrightarrow{AC}$,
+  \item en el mismo semiplano que $A$ respecto de la recta $\overleftrightarrow{BC}$.
+\end{itemize}
+
+Consideremos ahora la recta $r = \overleftrightarrow{CD}$. Como $D$ es interior
+al triángulo $\triangle ABC$, cualquier recta que pase por $D$ y por un vértice
+del triángulo corta al lado opuesto en un punto interior de ese lado.
+En particular, la recta $r$ corta al lado $AB$ en un punto $P$ con
+$P \in AB$ y $P \neq A,B$.
+
+Aplicamos el teorema de \emph{extremos de segmento en semiplanos opuestos} a la
+recta $r$ y al segmento $AB$: como $AB \cap r = \{P\}$ con $P$ interior al
+segmento, se concluye que $A$ y $B$ están en semiplanos opuestos respecto de
+$r$.
+
+Es decir, para el lado $CD$ del cuadrilátero, la recta que lo contiene deja a
+los otros dos vértices $A$ y $B$ en semiplanos distintos. Por lo tanto, \emph{no}
+se cumple la condición de convexidad por semiplanos. Concluimos que $ABCD$ no
+es convexo.
+
+\medskip
+
+($\Rightarrow$) Ahora supongamos que $ABCD$ no es convexo. Entonces, por la
+definición de convexidad en términos de semiplanos, existe al menos un lado
+del cuadrilátero cuyo soporte (la recta que lo contiene) deja a los otros dos
+vértices en semiplanos opuestos.
+
+Re-etiquetando los vértices si es necesario, podemos suponer que dicho lado
+es $CD$ y que la recta $r = \overleftrightarrow{CD}$ deja a $A$ y $B$ en
+semiplanos opuestos. Por el teorema de \emph{extremos de segmento en
+semiplanos opuestos}, esto implica que el segmento $AB$ corta a la recta $r$
+en un punto $P$ interior al segmento $AB$.
+
+Consideremos ahora el triángulo $\triangle ABC$. La recta $r$ pasa por $C$
+y por $P$, punto interior al lado $AB$. De este modo, $r$ divide al triángulo
+$\triangle ABC$ en dos partes, y el punto $D$, que está sobre $r$ pero en el
+lado “opuesto” respecto de $A$ y $B$, debe quedar en el interior de alguna de
+esas dos partes.
+
+Usando nuevamente la descripción del interior de un triángulo como intersección
+de semiplanos y los teoremas de segmentación en semiplanos, se verifica que
+$D$ cumple las tres condiciones para estar en el interior de $\triangle ABC$:
+\begin{itemize}
+  \item $D$ está en el mismo semiplano que $C$ respecto de $\overleftrightarrow{AB}$
+        (porque $P$ está entre $A$ y $B$ y $C$ está en el mismo lado que $D$
+        respecto de $r$),
+  \item $D$ está en el mismo semiplano que $B$ respecto de $\overleftrightarrow{AC}$,
+  \item $D$ está en el mismo semiplano que $A$ respecto de $\overleftrightarrow{BC}$.
+\end{itemize}
+
+Por lo tanto, $D$ está en el interior del triángulo $\triangle ABC$. Es decir,
+tres vértices del cuadrilátero (en este caso $A,B,C$) forman un triángulo cuyo
+interior contiene al cuarto vértice $D$.
+
+Esto completa la demostración de la equivalencia.
+\end{proof}
+
+
+\end{document}

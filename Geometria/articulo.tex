@@ -1,0 +1,100 @@
+\documentclass[10pt,twocolumn]{article}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{microtype}
+
+\geometry{margin=2cm}
+
+\title{Conjuntos infinitos: propiedades curiosas e interesantes}
+
+\author{
+  Autor Uno\thanks{Institución 1, correo@ejemplo.com}
+  \and
+  Autor Dos\thanks{Institución 2, correo2@ejemplo.com}
+  \and
+  Autor Tres\thanks{Institución 3, correo3@ejemplo.com}
+}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+En este artículo se presentan, de forma divulgativa, algunas propiedades llamativas de los conjuntos infinitos. Partiendo de la definición básica de conjunto infinito en teoría de conjuntos, se describen fenómenos contraintuitivos relacionados con la cardinalidad, la equipotencia con subconjuntos propios y la existencia de diferentes tamaños de infinito.
+\end{abstract}
+
+\section{Introducción}
+
+Los números naturales $\mathbb{N}=\{0,1,2,\dots\}$ son posiblemente el primer acercamiento matemático que tenemos con la idea de infinito. No importa qué tan grande sea un número natural: al sumarle $1$ siempre obtenemos otro número mayor. 
+
+Pero, \emph{¿cómo podemos concebir al conjunto completo} $\mathbb{N}$, si es imposible listar todos sus elementos? ¿Tiene sentido hablar de un conjunto con infinitos elementos? La realidad es que el infinito está presente en gran parte de las matemáticas (números reales, funciones, geometría, etc.), por lo que necesitó una definición rigurosa. Esto fue logrado a finales del siglo XIX por el matemático Georg Cantor, quien desarrolló la teoría de conjuntos y formalizó el concepto de conjunto infinito\footnote{Véase, por ejemplo, artículos de divulgación en \url{https://cienciauanl.uanl.mx}.}.
+
+En este artículo exploraremos de forma divulgativa algunas propiedades interesantes (y a veces contraintuitivas) de los conjuntos infinitos, apoyándonos en resultados básicos de la teoría de conjuntos.
+
+\section{Conjuntos finitos e infinitos}
+
+Llamamos \emph{finito} a un conjunto que tiene un número fijo de elementos, por ejemplo $5$ elementos o $1000$ elementos. Más formalmente, un conjunto $A$ es finito si existe algún número natural $n$ tal que $A$ se puede poner en biyección (correspondencia uno a uno) con el conjunto $\{0,1,2,\dots,n-1\}$; en caso contrario, $A$ es un conjunto infinito\footnote{Sobre definiciones formales de finitud e infinitud puede consultarse, por ejemplo, \url{https://dialnet.unirioja.es}.}.
+
+En otras palabras, un conjunto infinito es aquel que no se puede listar completamente hasta un último elemento: no importa cuánto contemos sus elementos, siempre quedarán más sin contar. Abundan los ejemplos de conjuntos infinitos en matemáticas: los números naturales $\mathbb{N}$, los números pares, los números primos, los enteros $\mathbb{Z}$, los racionales $\mathbb{Q}$ e incluso los números reales $\mathbb{R}$, todos ellos tienen una cantidad infinita de elementos\footnote{Una presentación divulgativa de estos ejemplos puede encontrarse en \url{https://cienciauanl.uanl.mx}.}.
+
+\section{Propiedades sorprendentes de los conjuntos infinitos}
+
+Los conjuntos infinitos poseen propiedades que no se dan en conjuntos finitos y que resultan muy curiosas. A continuación mencionamos algunas de las más interesantes.
+
+\subsection{Tamaño equivalente a un subconjunto propio}
+
+Un conjunto infinito puede tener la misma cantidad de elementos que una parte propia de sí mismo (algo imposible para conjuntos finitos). Por ejemplo, el conjunto de números pares $\{2,4,6,8,\dots\}$ es un subconjunto del conjunto de todos los naturales, pero en realidad hay tantos números pares como números naturales en total, ya que podemos establecer una biyección
+\[
+  f:\mathbb{N}\to 2\mathbb{N},\qquad f(n)=2n,
+\]
+entre $\mathbb{N}$ y el conjunto de los pares\footnote{Véanse derivaciones elementales de este hecho en notas de teoría de conjuntos disponibles en \url{https://es.scribd.com}.}.
+
+En general, si un conjunto $A$ es infinito, entonces existe algún subconjunto propio de $A$ con el cual $A$ es equipotente (tiene la misma cardinalidad)\footnote{Una discusión más formal se encuentra en textos introductorios de teoría de conjuntos, por ejemplo en \url{https://es.scribd.com}.}. Este hecho fue intuido por Galileo en el siglo XVII y posteriormente formalizado por Cantor: los conjuntos infinitos no obedecen nuestras nociones habituales de ``tamaño'' basadas en inclusión de conjuntos.
+
+\subsection{Agregar elementos no aumenta el tamaño}
+
+Si a un conjunto infinito le añadimos elementos (ya sea unos pocos o incluso infinitos en cantidad), podemos obtener un conjunto que, sorprendentemente, sigue teniendo el mismo ``tamaño infinito'' que el original. 
+
+El célebre ``Hotel Infinito'' de David Hilbert ilustra esta idea: incluso con todas sus habitaciones numeradas $1,2,3,\dots$ ocupadas, es posible alojar a un huésped adicional moviendo a cada persona de la habitación $n$ a la $n+1$, liberando así la habitación $1$ para el nuevo cliente\footnote{Una presentación clásica de esta paradoja se encuentra en artículos de divulgación disponibles en \url{https://dialnet.unirioja.es}.}. Esto deja en evidencia que $\mathbb{N}$ y $\mathbb{N}\cup\{\ast\}$ (naturales más un nuevo elemento $\ast$) tienen la misma cardinalidad infinita.
+
+Más asombroso aún, si llegara un conjunto infinito de nuevos huéspedes al hotel, también podría acomodarse sin dejar a nadie fuera: Hilbert mostró que basta con mover a cada huésped a una nueva habitación con número par (doblando el número de su habitación actual), con lo cual todas las habitaciones impares quedan libres para los recién llegados. 
+
+En términos de conjuntos, esto significa que incluso al unir dos colecciones infinitas numerables (por ejemplo $\mathbb{N}$ con otra copia de $\mathbb{N}$), el resultado sigue siendo un conjunto infinito numerable, sin aumentar la cardinalidad\footnote{Detalles de estas construcciones pueden consultarse en artículos introductorios en \url{https://dialnet.unirioja.es}.}. En resumen, sumar una cantidad finita o infinita numerable de elementos a un conjunto infinito numerable no lo hace ``más grande'' en el sentido de la teoría de conjuntos\footnote{Para una discusión más técnica sobre sumas y productos de cardinales numerables, véase también \url{https://dialnet.unirioja.es}.}.
+
+\subsection{Infinitos contables del mismo tamaño}
+
+No todos los infinitos ``del día a día'' son realmente distintos. De hecho, muchos conjuntos infinitos conocidos tienen exactamente la misma cardinalidad que $\mathbb{N}$. A estos conjuntos se les llama \emph{infinitos numerables o contables}, porque sus elementos se pueden listar secuencialmente como una lista infinita (existe una biyección con los naturales)\footnote{Una introducción divulgativa a los conjuntos numerables aparece en \url{https://cienciauanl.uanl.mx}.}.
+
+Por sorprendente que parezca, el conjunto de los números enteros $\mathbb{Z}$ tiene la misma cantidad de elementos que $\mathbb{N}$, pues podemos enumerar $\mathbb{Z}$ (por ejemplo:
+\[
+0,1,-1,2,-2,3,-3,\dots).
+\]
+Igualmente, el conjunto de los números racionales $\mathbb{Q}$ (fracciones) es infinito pero numerable: existe un procedimiento para listar todas las fracciones sin omitir ninguna\footnote{Véanse esquemas clásicos de enumeración de $\mathbb{Q}$ en \url{https://cienciauanl.uanl.mx}.}. 
+
+En otras palabras, $\mathbb{N}$, $\mathbb{Z}$ y $\mathbb{Q}$, a pesar de que cada uno ``contiene'' al anterior, comparten la misma cardinalidad infinita\footnote{Discusión detallada en materiales de divulgación disponibles en \url{https://cienciauanl.uanl.mx}.}. Este resultado contradice la intuición inicial de que ampliar un conjunto infinito (por ejemplo agregando los negativos o las fracciones a los naturales) debería producir un infinito de mayor tamaño; en realidad siguen siendo equipotentes.
+
+\subsection{Infinitos de distinto tamaño: contable vs.\ no contable}
+
+Cantor descubrió que no todos los conjuntos infinitos tienen la misma cardinalidad; hay infinitos ``más grandes'' que otros. El ejemplo clásico es el conjunto de los números reales $\mathbb{R}$, que constituye un infinito no numerable (incontable), estrictamente mayor que la infinidad numerable de $\mathbb{N}$\footnote{Presentaciones de la prueba de Cantor pueden encontrarse en \url{https://cienciauanl.uanl.mx}.}.
+
+La intuición podría sugerir que $\mathbb{R}$ es mayor que $\mathbb{N}$ simplemente porque $\mathbb{N}\subset\mathbb{R}$. Sin embargo, la diferencia de tamaños infinitos no está determinada únicamente por inclusión: como vimos arriba, $\mathbb{N}$ está contenido en $\mathbb{Z}$ y en $\mathbb{Q}$ y aun así todos esos conjuntos son del mismo tamaño\footnote{Véase la discusión sobre conjuntos numerables en \url{https://cienciauanl.uanl.mx}.}. 
+
+La razón de que $\mathbb{R}$ sea ``más grande'' es más sutil. Cantor lo demostró mediante su famosa técnica de la \emph{diagonal}, probando que cualquier intento de enumerar todos los números reales falla siempre, porque es posible construir un número real nuevo que no estaba en la supuesta lista\footnote{Una explicación divulgativa de la diagonal de Cantor se encuentra en \url{https://cienciauanl.uanl.mx}.}. 
+
+En conclusión, existen diferentes cardinalidades infinitas: el tamaño infinito numerable (también denominado $\aleph_0$) de $\mathbb{N}$, $\mathbb{Z}$ o $\mathbb{Q}$, y el tamaño mayor (continuo) de $\mathbb{R}$, entre otros. De hecho, después de $\mathbb{R}$ hay infinitos aún más grandes: no existe un ``mayor infinito'' absoluto, sino una jerarquía infinita de cardinales transfinitos, un concepto que revolucionó la matemática a partir de los trabajos de Cantor\footnote{Para una introducción accesible a los cardinales transfinitos puede consultarse nuevamente \url{https://cienciauanl.uanl.mx}.}.
+
+\section{Conclusión}
+
+Hemos visto que los conjuntos infinitos desafían nuestras nociones habituales de tamaño: pueden ser equipotentes a una parte de sí mismos, pueden absorber nuevos elementos sin ``crecer'' y pueden incluso tener distintos tamaños de infinitud. Estas propiedades, que en un principio lucen contraintuitivas o paradójicas, son en realidad consecuencias lógicas de las definiciones precisas introducidas por la teoría de conjuntos\footnote{Véase \url{https://cienciauanl.uanl.mx} para más ejemplos y discusiones.}. 
+
+Gracias a dichas definiciones, conceptos como el infinito dejaron de ser algo místico o incoherente para convertirse en objetos matemáticos bien entendidos. En palabras de Cantor y sus sucesores, el infinito no es inalcanzable para la razón humana, sino que puede estudiarse rigurosamente como parte de la matemática\footnote{Diversas fuentes de divulgación recogen esta idea central del trabajo de Cantor, por ejemplo \url{https://cienciauanl.uanl.mx}.}.
+
+\end{document}
